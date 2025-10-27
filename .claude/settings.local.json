@@ -14,7 +14,12 @@
       "Bash(where gh:*)",
       "Bash(\"C:\\Program Files\\GitHub CLI\\gh.exe\" --version)",
       "Bash(\"C:\\Program Files\\GitHub CLI\\gh.exe\" auth login)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(\"C:\\Program Files\\GitHub CLI\\gh.exe\" repo create shopify-published-cursor-theme --public --source=. --remote=origin --push)",
+      "Bash(\"C:\\Program Files\\GitHub CLI\\gh.exe\" repo rename Published-cursor)",
+      "Bash(\"C:\\Program Files\\GitHub CLI\\gh.exe\" repo rename Published-cursor --yes)",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []
