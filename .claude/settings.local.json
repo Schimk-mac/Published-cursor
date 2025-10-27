@@ -30,7 +30,9 @@
       "Bash(taskkill:*)",
       "Bash(timeout:*)",
       "Bash(powershell -Command \"Stop-Process -Id 68892 -Force; Write-Host ''Dev server stopped''\")",
-      "Bash(powershell -Command:*)"
+      "Bash(powershell -Command:*)",
+      "Bash(awk:*)",
+      "Bash(git pull:*)"
     ],
     "deny": [],
     "ask": []
