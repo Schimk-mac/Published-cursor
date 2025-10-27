@@ -101,7 +101,7 @@ Supported variables
                 <form method="post" action="{{ routes.cart_add_url }}" accept-charset="UTF-8" enctype="multipart/form-data">
                   <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
                   <input type="hidden" name="quantity" value="1">
-                  <button type="submit" name="add" class="product-mega-menu__add-to-cart">
+                  <button type="submit" name="add" class="button product-mega-menu__add-to-cart">
                     {%- render 'icon' with 'cart', width: 16 -%}
                     <span>Add to Cart</span>
                   </button>
@@ -110,7 +110,7 @@ Supported variables
             </div>
           {%- elsif show_add_to_cart and product.available == false -%}
             <div class="product-mega-menu__actions">
-              <button type="button" disabled class="product-mega-menu__add-to-cart product-mega-menu__add-to-cart--disabled">
+              <button type="button" disabled class="button product-mega-menu__add-to-cart product-mega-menu__add-to-cart--disabled">
                 <span>Sold Out</span>
               </button>
             </div>

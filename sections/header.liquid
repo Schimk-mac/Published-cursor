@@ -123,7 +123,7 @@
     display: flex;
     flex-direction: column;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    border-radius: 8px;
+    border-radius: 25%;
     overflow: hidden;
     background: var(--color-scheme-background, #fff);
     border: 1px solid rgba(var(--color-scheme-text), 0.08);
@@ -191,6 +191,11 @@
     line-height: 1.3;
     margin: 0;
     color: rgb(var(--color-scheme-text));
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 
   .product-mega-menu__description {
@@ -199,6 +204,11 @@
     color: rgba(var(--color-scheme-text), 0.7);
     margin: 0;
     flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
   }
 
   .product-mega-menu__price {
@@ -264,31 +274,6 @@
 
   .product-mega-menu__add-to-cart {
     width: 100%;
-    padding: 0.75rem 1rem;
-    background: rgb(var(--color-scheme-text));
-    color: rgb(var(--color-scheme-background));
-    border: none;
-    border-radius: 6px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  .product-mega-menu__add-to-cart:hover:not(:disabled) {
-    background: rgba(var(--color-scheme-text), 0.85);
-    transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  }
-
-  .product-mega-menu__add-to-cart:active:not(:disabled) {
-    transform: translateY(0);
   }
 
   .product-mega-menu__add-to-cart svg {
@@ -297,9 +282,8 @@
   }
 
   .product-mega-menu__add-to-cart--disabled {
-    background: rgba(var(--color-scheme-text), 0.3);
+    opacity: 0.5;
     cursor: not-allowed;
-    opacity: 0.6;
   }
 
   /* Ensure mega menu dropdown is wide enough for products */
