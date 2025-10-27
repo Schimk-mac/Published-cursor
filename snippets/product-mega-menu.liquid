@@ -31,67 +31,91 @@ Supported variables
     {%- for product_block in product_blocks -%}
       {%- liquid
         assign product = product_block.settings.product
-        assign show_description = product_block.settings.show_description
-        assign description_length = product_block.settings.description_length | default: 100
+        assign custom_description = product_block.settings.custom_description
+        assign show_price = product_block.settings.show_price
+        assign show_add_to_cart = product_block.settings.show_add_to_cart
       -%}
 
       {%- if product != blank -%}
-        <a href="{{ product.url }}" class="product-mega-menu__item" {{ product_block.shopify_attributes }}>
-          <div class="product-mega-menu__image-wrapper">
-            {%- if product.featured_image -%}
-              <img
-                src="{{ product.featured_image | image_url: width: 300 }}"
-                srcset="{{ product.featured_image | image_url: width: 300 }} 300w,
-                        {{ product.featured_image | image_url: width: 600 }} 600w"
-                sizes="(min-width: 1000px) 250px, 200px"
-                alt="{{ product.featured_image.alt | escape }}"
-                loading="lazy"
-                width="300"
-                height="{{ 300 | divided_by: product.featured_image.aspect_ratio | ceil }}"
-                class="product-mega-menu__image"
-              >
-            {%- else -%}
-              <div class="product-mega-menu__image product-mega-menu__image--placeholder">
-                {%- render 'icon' with 'image-placeholder' -%}
-              </div>
-            {%- endif -%}
-          </div>
-
-          <div class="product-mega-menu__content">
-            <h4 class="product-mega-menu__title">{{ product.title }}</h4>
-
-            {%- if show_description and product.description != blank -%}
-              <p class="product-mega-menu__description">
-                {{ product.description | strip_html | truncate: description_length }}
-              </p>
-            {%- endif -%}
-
-            <div class="product-mega-menu__price">
-              {%- if product.compare_at_price > product.price -%}
-                <span class="product-mega-menu__price--sale">
-                  {{ product.price | money }}
-                </span>
-                <span class="product-mega-menu__price--compare">
-                  {{ product.compare_at_price | money }}
-                </span>
+        <div class="product-mega-menu__item" {{ product_block.shopify_attributes }}>
+          <a href="{{ product.url }}" class="product-mega-menu__link">
+            <div class="product-mega-menu__image-wrapper">
+              {%- if product.featured_image -%}
+                <img
+                  src="{{ product.featured_image | image_url: width: 300 }}"
+                  srcset="{{ product.featured_image | image_url: width: 300 }} 300w,
+                          {{ product.featured_image | image_url: width: 600 }} 600w"
+                  sizes="(min-width: 1000px) 250px, 200px"
+                  alt="{{ product.featured_image.alt | escape }}"
+                  loading="lazy"
+                  width="300"
+                  height="{{ 300 | divided_by: product.featured_image.aspect_ratio | ceil }}"
+                  class="product-mega-menu__image"
+                >
               {%- else -%}
-                <span class="product-mega-menu__price--regular">
-                  {{ product.price | money }}
+                <div class="product-mega-menu__image product-mega-menu__image--placeholder">
+                  {%- render 'icon' with 'image-placeholder' -%}
+                </div>
+              {%- endif -%}
+
+              {%- if product.available == false -%}
+                <span class="product-mega-menu__badge product-mega-menu__badge--sold-out">
+                  Sold Out
+                </span>
+              {%- elsif product.compare_at_price > product.price -%}
+                <span class="product-mega-menu__badge product-mega-menu__badge--sale">
+                  Sale
                 </span>
               {%- endif -%}
             </div>
 
-            {%- if product.available == false -%}
-              <span class="product-mega-menu__badge product-mega-menu__badge--sold-out">
-                Sold Out
-              </span>
-            {%- elsif product.compare_at_price > product.price -%}
-              <span class="product-mega-menu__badge product-mega-menu__badge--sale">
-                Sale
-              </span>
-            {%- endif -%}
-          </div>
-        </a>
+            <div class="product-mega-menu__content">
+              <h4 class="product-mega-menu__title">{{ product.title }}</h4>
+
+              {%- if custom_description != blank -%}
+                <p class="product-mega-menu__description">{{ custom_description }}</p>
+              {%- endif -%}
+
+              {%- if show_price -%}
+                <div class="product-mega-menu__price">
+                  {%- if product.compare_at_price > product.price -%}
+                    <span class="product-mega-menu__price--sale">
+                      {{ product.price | money }}
+                    </span>
+                    <span class="product-mega-menu__price--compare">
+                      {{ product.compare_at_price | money }}
+                    </span>
+                  {%- else -%}
+                    <span class="product-mega-menu__price--regular">
+                      {{ product.price | money }}
+                    </span>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            </div>
+          </a>
+
+          {%- if show_add_to_cart and product.available -%}
+            <div class="product-mega-menu__actions">
+              <product-form class="product-mega-menu__form">
+                <form method="post" action="{{ routes.cart_add_url }}" accept-charset="UTF-8" enctype="multipart/form-data">
+                  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                  <input type="hidden" name="quantity" value="1">
+                  <button type="submit" name="add" class="product-mega-menu__add-to-cart">
+                    {%- render 'icon' with 'cart', width: 16 -%}
+                    <span>Add to Cart</span>
+                  </button>
+                </form>
+              </product-form>
+            </div>
+          {%- elsif show_add_to_cart and product.available == false -%}
+            <div class="product-mega-menu__actions">
+              <button type="button" disabled class="product-mega-menu__add-to-cart product-mega-menu__add-to-cart--disabled">
+                <span>Sold Out</span>
+              </button>
+            </div>
+          {%- endif -%}
+        </div>
       {%- endif -%}
     {%- endfor -%}
   </div>
