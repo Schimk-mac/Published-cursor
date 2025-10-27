@@ -1,0 +1,330 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+PRODUCT GALLERY COMPONENT - AGENT 1
+----------------------------------------------------------------------------------------------------------------------
+
+This is the product gallery component created by Agent 1 for the Shopify Prestige theme.
+Handles all media display including images, videos, and 3D models with full interactive features.
+
+********************************************
+Supported variables
+********************************************
+
+* product: the product to render (if empty, renders placeholder content)
+* product_form_id: the product form id
+* enable_image_zoom: if set to true the gallery allows zoom
+* mobile_controls: the controls to show on mobile (default: 'thumbnails')
+* enable_media_autoplay: if set to true media are autoplayed when switched to
+* enable_video_looping: if set to true videos automatically loop when finished
+* desktop_layout: the layout on desktop (default: 'carousel_thumbnails_left')
+
+{%- endcomment -%}
+
+{%- comment -%}Link to external stylesheet{%- endcomment -%}
+<link rel="stylesheet" href="{{ 'product-gallery-agent1.css' | asset_url }}" media="all">
+
+{%- comment -%}
+IMPLEMENTATION NOTE: Shopify variant image filtering using alt tags
+See: https://support.maestrooo.com/article/721-variant-images-set
+{%- endcomment -%}
+
+{% liquid
+  assign default_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media
+  assign product_gallery_carousel_id = 'product-gallery-agent1-carousel-' | append: product.id
+  assign filtered_indexes = null | sort
+  assign mobile_controls = mobile_controls | default: 'thumbnails'
+  assign desktop_layout = desktop_layout | default: 'carousel_thumbnails_left'
+
+  if product.variants.size > 1
+    for media in product.media
+      if media.alt contains '#' and media.alt != product.title
+        assign alt_parts = media.alt | split: '#'
+        assign media_group_parts = alt_parts.last | split: '_'
+        assign option = product.options_by_name[media_group_parts.first]
+        assign option_value = option.selected_value | downcase
+        assign downcase_group_value = media_group_parts.last | strip | downcase
+
+        if option_value != downcase_group_value and media != default_media
+          assign media_position = media.position | sort
+          assign filtered_indexes = filtered_indexes | concat: media_position
+        endif
+      endif
+    endfor
+  endif
+%}
+
+<product-gallery-agent1
+  class="product-gallery-agent1"
+  form="{{ product_form_id }}"
+  filtered-indexes="{{ filtered_indexes | json }}"
+  {% if enable_media_autoplay %}autoplay-media{% endif %}
+  {% if enable_image_zoom %}allow-zoom="true"{% endif %}
+  role="region"
+  aria-label="Product gallery">
+
+  {%- comment -%}Zoom button for mobile{%- endcomment -%}
+  {%- if enable_image_zoom -%}
+    <button
+      class="product-gallery-agent1__zoom-button"
+      aria-label="Zoom into product image"
+      data-zoom-trigger>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"></circle>
+        <path d="m21 21-4.35-4.35"></path>
+        <line x1="11" y1="8" x2="11" y2="14"></line>
+        <line x1="8" y1="11" x2="14" y2="11"></line>
+      </svg>
+    </button>
+  {%- endif -%}
+
+  <div class="product-gallery-agent1__wrapper">
+    {%- comment -%}
+    ----------------------------------------------------------------------------------------------------------------------
+    MAIN CAROUSEL AREA
+    ----------------------------------------------------------------------------------------------------------------------
+    {%- endcomment -%}
+
+    <div class="product-gallery-agent1__carousel-container">
+      <div
+        id="{{ product_gallery_carousel_id }}"
+        class="product-gallery-agent1__carousel"
+        role="region"
+        aria-roledescription="carousel"
+        aria-label="Product images carousel"
+        data-carousel>
+
+        {%- if product != blank -%}
+          {%- liquid
+            capture sizes
+              echo '(max-width: 699px) calc(100vw - 40px), (max-width: 999px) calc(100vw - 64px), '
+
+              if desktop_layout == 'carousel_thumbnails_left'
+                echo 'calc(65vw - 96px)'
+              else
+                echo 'calc(70vw - 96px)'
+              endif
+            endcapture
+          -%}
+
+          {%- for media in product.media -%}
+            <div
+              class="product-gallery-agent1__media {% if media == default_media %}is-selected{% endif %}"
+              data-media-type="{{ media.media_type }}"
+              data-media-id="{{ media.id }}"
+              data-media-position="{{ media.position }}"
+              role="group"
+              aria-roledescription="slide"
+              aria-label="Item {{ media.position }} of {{ product.media.size }}"
+              {% if filtered_indexes contains media.position %}hidden{% endif %}
+              tabindex="{% if media == default_media %}0{% else %}-1{% endif %}">
+
+              {%- if default_media == media -%}
+                {%- assign preload = true -%}
+                {%- assign loading = 'eager' -%}
+              {%- else -%}
+                {%- assign preload = false -%}
+                {%- assign loading = 'lazy' -%}
+              {%- endif -%}
+
+              {%- case media.media_type -%}
+                {%- when 'image' -%}
+                  {%- comment -%}Image media{%- endcomment -%}
+                  <img
+                    src="{{ media | image_url: width: 1200 }}"
+                    srcset="{{ media | image_url: width: 375 }} 375w,
+                            {{ media | image_url: width: 750 }} 750w,
+                            {{ media | image_url: width: 1100 }} 1100w,
+                            {{ media | image_url: width: 1500 }} 1500w,
+                            {{ media | image_url: width: 2000 }} 2000w"
+                    sizes="{{ sizes }}"
+                    alt="{{ media.alt | escape }}"
+                    loading="{{ loading }}"
+                    width="{{ media.width }}"
+                    height="{{ media.height }}"
+                    class="product-gallery-agent1__image"
+                    {% if enable_image_zoom %}data-zoomable{% endif %}>
+
+                {%- when 'video' or 'external_video' -%}
+                  {%- comment -%}Video media{%- endcomment -%}
+                  <div class="product-gallery-agent1__video-wrapper">
+                    {%- if media.media_type == 'video' -%}
+                      {{- media | video_tag:
+                          image_size: '1100x',
+                          controls: true,
+                          muted: enable_media_autoplay,
+                          loop: enable_video_looping,
+                          preload: 'metadata',
+                          class: 'product-gallery-agent1__video' -}}
+                    {%- else -%}
+                      {{- media | external_video_tag:
+                          image_size: '1100x',
+                          class: 'product-gallery-agent1__video' -}}
+                    {%- endif -%}
+                  </div>
+
+                {%- when 'model' -%}
+                  {%- comment -%}3D model media{%- endcomment -%}
+                  <div class="product-gallery-agent1__model-wrapper">
+                    {{- media | model_viewer_tag:
+                        image_size: '1100x',
+                        reveal: 'interaction',
+                        toggleable: true,
+                        class: 'product-gallery-agent1__model' -}}
+                  </div>
+              {%- endcase -%}
+
+              {%- comment -%}Media type badge{%- endcomment -%}
+              {%- unless media.media_type == 'image' -%}
+                <div class="product-gallery-agent1__media-badge" aria-label="{{ media.media_type | capitalize }}">
+                  {%- if media.media_type == 'model' -%}
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                      <path d="M8 1L2 4v8l6 3 6-3V4L8 1zm0 2.2L12.4 5 8 6.8 3.6 5 8 3.2zM3.5 6.5L7.5 8.3v5.4l-4-2V6.5zm9 0v5.2l-4 2V8.3l4-1.8z"/>
+                    </svg>
+                    <span class="sr-only">3D Model</span>
+                  {%- elsif media.media_type == 'video' or media.media_type == 'external_video' -%}
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                      <path d="M5 3l8 5-8 5V3z"/>
+                    </svg>
+                    <span class="sr-only">Video</span>
+                  {%- endif -%}
+                </div>
+              {%- endunless -%}
+            </div>
+          {%- endfor -%}
+        {%- else -%}
+          {%- comment -%}Placeholder content{%- endcomment -%}
+          {%- for i in (1..3) -%}
+            {%- capture placeholder_name -%}product-{{ i }}{%- endcapture -%}
+            <div
+              class="product-gallery-agent1__media {% if forloop.first %}is-selected{% endif %}"
+              data-media-type="image"
+              data-media-position="{{ forloop.index }}"
+              role="group"
+              aria-roledescription="slide"
+              aria-label="Item {{ forloop.index }} of 3">
+              {{- placeholder_name | placeholder_svg_tag: 'product-gallery-agent1__placeholder' -}}
+            </div>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+
+      {%- comment -%}Navigation arrows for mobile{%- endcomment -%}
+      {%- if mobile_controls == 'arrows' and product.media.size > 1 -%}
+        <button
+          class="product-gallery-agent1__arrow product-gallery-agent1__arrow--prev"
+          aria-label="Previous image"
+          data-carousel-prev>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+        </button>
+        <button
+          class="product-gallery-agent1__arrow product-gallery-agent1__arrow--next"
+          aria-label="Next image"
+          data-carousel-next>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </button>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%}
+    ----------------------------------------------------------------------------------------------------------------------
+    THUMBNAIL LIST
+    ----------------------------------------------------------------------------------------------------------------------
+    {%- endcomment -%}
+
+    {%- if product.media.size > 1 or product == blank -%}
+      <div
+        class="product-gallery-agent1__thumbnail-list"
+        role="tablist"
+        aria-label="Product thumbnail navigation">
+
+        {%- if product != blank -%}
+          {%- for media in product.media -%}
+            <button
+              type="button"
+              class="product-gallery-agent1__thumbnail {% if media == default_media %}is-selected{% endif %}"
+              data-media-id="{{ media.id }}"
+              data-media-position="{{ media.position }}"
+              data-thumbnail
+              role="tab"
+              aria-selected="{% if media == default_media %}true{% else %}false{% endif %}"
+              aria-controls="{{ product_gallery_carousel_id }}"
+              aria-label="View image {{ media.position }} of {{ product.media.size }}"
+              {% if filtered_indexes contains media.position %}hidden{% endif %}
+              tabindex="{% if media == default_media %}0{% else %}-1{% endif %}">
+
+              <img
+                src="{{ media | image_url: width: 200 }}"
+                srcset="{{ media | image_url: width: 100 }} 100w,
+                        {{ media | image_url: width: 200 }} 200w"
+                sizes="(max-width: 999px) 25vw, 56px"
+                alt="{{ media.alt | escape }}"
+                loading="lazy"
+                width="100"
+                height="100"
+                class="product-gallery-agent1__thumbnail-image">
+
+              {%- comment -%}Media type indicator on thumbnail{%- endcomment -%}
+              {%- unless media.media_type == 'image' -%}
+                <span class="product-gallery-agent1__thumbnail-badge" aria-label="{{ media.media_type | capitalize }}">
+                  {%- if media.media_type == 'model' -%}
+                    <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                      <path d="M8 1L2 4v8l6 3 6-3V4L8 1zm0 2.2L12.4 5 8 6.8 3.6 5 8 3.2zM3.5 6.5L7.5 8.3v5.4l-4-2V6.5zm9 0v5.2l-4 2V8.3l4-1.8z"/>
+                    </svg>
+                  {%- else -%}
+                    <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                      <path d="M5 3l8 5-8 5V3z"/>
+                    </svg>
+                  {%- endif -%}
+                </span>
+              {%- endunless -%}
+            </button>
+          {%- endfor -%}
+        {%- else -%}
+          {%- comment -%}Placeholder thumbnails{%- endcomment -%}
+          {%- for i in (1..3) -%}
+            {%- capture placeholder_name -%}product-{% cycle '1', '2', '3' %}{%- endcapture -%}
+            <button
+              type="button"
+              class="product-gallery-agent1__thumbnail {% if forloop.first %}is-selected{% endif %}"
+              role="tab"
+              aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+              aria-label="View image {{ forloop.index }} of 3">
+              {{- placeholder_name | placeholder_svg_tag: 'product-gallery-agent1__thumbnail-image' -}}
+            </button>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%}
+    ----------------------------------------------------------------------------------------------------------------------
+    VIEW IN YOUR SPACE (3D Models)
+    ----------------------------------------------------------------------------------------------------------------------
+    {%- endcomment -%}
+
+    {%- assign first_3d_model = product.media | where: 'media_type', 'model' | first -%}
+
+    {%- if first_3d_model -%}
+      <link rel="stylesheet" href="https://cdn.shopify.com/shopifycloud/model-viewer-ui/assets/v1.0/model-viewer-ui.css" media="print" onload="this.media='all'">
+
+      <button
+        class="product-gallery-agent1__view-in-space"
+        data-shopify-xr
+        data-shopify-model3d-id="{{ first_3d_model.id }}"
+        data-shopify-title="{{ product.title | escape }}"
+        aria-label="View {{ product.title }} in your space">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path d="M10 1L2 5v10l8 4 8-4V5l-8-4zm0 2.5L15.5 6 10 8.5 4.5 6 10 3.5zM4 7.5L9 9.5v7l-5-2.5v-6.5zm12 0v6.5L11 16.5v-7l5-2z"/>
+        </svg>
+        View in your space
+      </button>
+    {%- endif -%}
+  </div>
+</product-gallery-agent1>
+
+{%- comment -%}Load JavaScript functionality{%- endcomment -%}
+<script src="{{ 'product-gallery-agent1.js' | asset_url }}" defer></script>
