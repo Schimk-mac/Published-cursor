@@ -1,0 +1,377 @@
+{% comment %}
+  Product Information Component - Agent 2
+
+  Parameters:
+  - product: Product object
+  - product_form_id: Form ID for the product
+  - context: Context of rendering (e.g., 'main_product')
+{% endcomment %}
+
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+{%- assign product_form_id = product_form_id | default: 'product-form-' | append: product.id -%}
+{%- assign context = context | default: 'main_product' -%}
+
+{{ 'product-info-agent2.css' | asset_url | stylesheet_tag }}
+
+<div class="product-info" data-product-id="{{ product.id }}" data-context="{{ context }}">
+
+  {%- comment -%} Product Title and Rating {%- endcomment -%}
+  <div class="product-info__header">
+    <h1 class="product-info__title">{{ product.title }}</h1>
+
+    {%- if product.metafields.reviews.rating.value -%}
+      <div class="product-info__rating" role="img" aria-label="Rated {{ product.metafields.reviews.rating.value }} out of 5">
+        <div class="product-info__stars">
+          {%- assign rating = product.metafields.reviews.rating.value | round -%}
+          {%- for i in (1..5) -%}
+            <svg class="product-info__star {% if i <= rating %}product-info__star--filled{% endif %}" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M8 0L10.163 5.455L16 6.273L12 10.182L12.944 16L8 13.455L3.056 16L4 10.182L0 6.273L5.837 5.455L8 0Z" fill="currentColor"/>
+            </svg>
+          {%- endfor -%}
+        </div>
+        <span class="product-info__rating-count">
+          ({{ product.metafields.reviews.rating_count.value | default: 0 }} reviews)
+        </span>
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} Price Display {%- endcomment -%}
+  <div class="product-info__price-wrapper">
+    <div class="product-info__price" data-price-wrapper>
+      {%- if current_variant.compare_at_price > current_variant.price -%}
+        <span class="product-info__price--sale" data-price>
+          {{ current_variant.price | money }}
+        </span>
+        <span class="product-info__price--regular" data-compare-price>
+          {{ current_variant.compare_at_price | money }}
+        </span>
+        {%- assign discount_percentage = current_variant.compare_at_price | minus: current_variant.price | times: 100.0 | divided_by: current_variant.compare_at_price | round -%}
+        <span class="product-info__discount-badge">
+          Save {{ discount_percentage }}%
+        </span>
+      {%- else -%}
+        <span class="product-info__price--regular" data-price>
+          {{ current_variant.price | money }}
+        </span>
+      {%- endif -%}
+    </div>
+
+    {%- if current_variant.unit_price_measurement -%}
+      <div class="product-info__unit-price">
+        <span class="product-info__unit-price-value">{{ current_variant.unit_price | money }}</span>
+        <span class="product-info__unit-price-separator">/</span>
+        {%- if current_variant.unit_price_measurement.reference_value != 1 -%}
+          <span class="product-info__unit-price-reference-value">{{ current_variant.unit_price_measurement.reference_value }}</span>
+        {%- endif -%}
+        <span class="product-info__unit-price-reference-unit">{{ current_variant.unit_price_measurement.reference_unit }}</span>
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} Product Description {%- endcomment -%}
+  {%- if product.description != blank -%}
+    <div class="product-info__description-wrapper">
+      <div class="product-info__description" data-description>
+        {{ product.description | truncatewords: 50 }}
+      </div>
+      {%- if product.description.size > 300 -%}
+        <button type="button" class="product-info__description-toggle" data-description-toggle aria-expanded="false">
+          <span class="product-info__description-toggle-more">Read more</span>
+          <span class="product-info__description-toggle-less" hidden>Read less</span>
+        </button>
+        <div class="product-info__description-full" data-description-full hidden>
+          {{ product.description }}
+        </div>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} SKU and Availability {%- endcomment -%}
+  <div class="product-info__meta">
+    {%- if current_variant.sku != blank -%}
+      <div class="product-info__sku">
+        <span class="product-info__sku-label">SKU:</span>
+        <span class="product-info__sku-value" data-sku>{{ current_variant.sku }}</span>
+      </div>
+    {%- endif -%}
+
+    <div class="product-info__availability" data-availability>
+      {%- if current_variant.available -%}
+        <svg class="product-info__availability-icon product-info__availability-icon--in-stock" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="8" cy="8" r="8" fill="currentColor"/>
+        </svg>
+        <span class="product-info__availability-text product-info__availability-text--in-stock">
+          {%- if current_variant.inventory_management and current_variant.inventory_quantity <= 10 and current_variant.inventory_quantity > 0 -%}
+            Only {{ current_variant.inventory_quantity }} left in stock
+          {%- else -%}
+            In stock
+          {%- endif -%}
+        </span>
+      {%- else -%}
+        <svg class="product-info__availability-icon product-info__availability-icon--out-of-stock" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="8" cy="8" r="8" fill="currentColor"/>
+        </svg>
+        <span class="product-info__availability-text product-info__availability-text--out-of-stock">
+          Out of stock
+        </span>
+      {%- endif -%}
+    </div>
+  </div>
+
+  {%- comment -%} Product Form {%- endcomment -%}
+  <product-info-form class="product-info__form-wrapper">
+    {%- form 'product', product, id: product_form_id, data-type: 'add-to-cart-form', novalidate: 'novalidate' -%}
+      <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-id>
+
+      {%- comment -%} Variant Selection {%- endcomment -%}
+      {%- unless product.has_only_default_variant -%}
+        <div class="product-info__variants">
+          {%- for option in product.options_with_values -%}
+            <div class="product-info__variant-option">
+              <label class="product-info__variant-label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+                {{ option.name }}:
+                <span class="product-info__variant-value" data-option-value-{{ forloop.index0 }}>
+                  {{ option.selected_value }}
+                </span>
+              </label>
+
+              {%- if option.name == 'Color' or option.name == 'Colour' -%}
+                {%- comment -%} Color Swatches {%- endcomment -%}
+                <div class="product-info__variant-swatches" role="radiogroup" aria-label="{{ option.name }}">
+                  {%- for value in option.values -%}
+                    {%- assign swatch_color = value | handle -%}
+                    <div class="product-info__swatch-wrapper">
+                      <input
+                        type="radio"
+                        id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                        name="options[{{ option.name | escape }}]"
+                        value="{{ value | escape }}"
+                        class="product-info__swatch-input"
+                        data-option-position="{{ option.position }}"
+                        {% if option.selected_value == value %}checked{% endif %}
+                        {% if value.available == false %}disabled{% endif %}
+                      >
+                      <label
+                        for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                        class="product-info__swatch"
+                        style="background-color: {{ swatch_color }};"
+                        title="{{ value }}"
+                      >
+                        <span class="visually-hidden">{{ value }}</span>
+                      </label>
+                    </div>
+                  {%- endfor -%}
+                </div>
+              {%- else -%}
+                {%- comment -%} Dropdown or Button Selection {%- endcomment -%}
+                <div class="product-info__variant-buttons" role="radiogroup" aria-label="{{ option.name }}">
+                  {%- for value in option.values -%}
+                    <div class="product-info__variant-button-wrapper">
+                      <input
+                        type="radio"
+                        id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                        name="options[{{ option.name | escape }}]"
+                        value="{{ value | escape }}"
+                        class="product-info__variant-button-input"
+                        data-option-position="{{ option.position }}"
+                        {% if option.selected_value == value %}checked{% endif %}
+                      >
+                      <label
+                        for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                        class="product-info__variant-button"
+                      >
+                        {{ value }}
+                      </label>
+                    </div>
+                  {%- endfor -%}
+                </div>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endunless -%}
+
+      {%- comment -%} Quantity and Add to Cart {%- endcomment -%}
+      <div class="product-info__purchase-wrapper">
+        <div class="product-info__quantity-wrapper">
+          <label class="product-info__quantity-label" for="Quantity-{{ section.id }}">
+            Quantity
+          </label>
+          <div class="product-info__quantity-selector">
+            <button
+              type="button"
+              class="product-info__quantity-button product-info__quantity-button--minus"
+              aria-label="Decrease quantity"
+              data-quantity-minus
+            >
+              <svg width="12" height="2" viewBox="0 0 12 2" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M0 1H12" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </button>
+            <input
+              type="number"
+              id="Quantity-{{ section.id }}"
+              name="quantity"
+              value="1"
+              min="1"
+              class="product-info__quantity-input"
+              aria-label="Product quantity"
+              data-quantity-input
+            >
+            <button
+              type="button"
+              class="product-info__quantity-button product-info__quantity-button--plus"
+              aria-label="Increase quantity"
+              data-quantity-plus
+            >
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M6 0V12M0 6H12" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="product-info__buttons">
+          <button
+            type="submit"
+            name="add"
+            class="product-info__add-button"
+            {% unless current_variant.available %}disabled{% endunless %}
+            data-add-to-cart
+          >
+            <span class="product-info__add-button-text">
+              {%- if current_variant.available -%}
+                Add to Cart
+              {%- else -%}
+                Sold Out
+              {%- endif -%}
+            </span>
+            <div class="product-info__add-button-loader" hidden>
+              <svg class="product-info__spinner" width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="50" stroke-dashoffset="25"/>
+              </svg>
+            </div>
+          </button>
+
+          {%- if current_variant.available -%}
+            {{ form | payment_button }}
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- comment -%} Error Message Container {%- endcomment -%}
+      <div class="product-info__error-message" role="alert" data-error-message hidden></div>
+
+    {%- endform -%}
+  </product-info-form>
+
+  {%- comment -%} Wishlist Button {%- endcomment -%}
+  <button type="button" class="product-info__wishlist-button" data-wishlist-toggle aria-label="Add to wishlist">
+    <svg class="product-info__wishlist-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="product-info__wishlist-text">Save for later</span>
+  </button>
+
+  {%- comment -%} Trust Badges {%- endcomment -%}
+  <div class="product-info__trust-badges">
+    <div class="product-info__trust-badge">
+      <svg class="product-info__trust-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="product-info__trust-text">
+        <strong>Secure Payment</strong>
+        <span>SSL encrypted checkout</span>
+      </div>
+    </div>
+
+    <div class="product-info__trust-badge">
+      <svg class="product-info__trust-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="1" y="3" width="15" height="13" rx="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M16 8a4 4 0 0 1 6.874 2.874L23 10.874V20a2 2 0 0 1-2 2h-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M1 7h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="product-info__trust-text">
+        <strong>Free Shipping</strong>
+        <span>On orders over $50</span>
+      </div>
+    </div>
+
+    <div class="product-info__trust-badge">
+      <svg class="product-info__trust-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="product-info__trust-text">
+        <strong>Easy Returns</strong>
+        <span>30-day return policy</span>
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%} Shipping and Delivery Info {%- endcomment -%}
+  <div class="product-info__shipping-info">
+    <div class="product-info__shipping-item">
+      <svg class="product-info__shipping-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L19 6H5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Estimated delivery: <strong>3-5 business days</strong></span>
+    </div>
+
+    <div class="product-info__shipping-item">
+      <svg class="product-info__shipping-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="2"/>
+        <path d="M9 5v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span>Order within <strong>2 hours 15 mins</strong> for same day dispatch</span>
+    </div>
+  </div>
+
+  {%- comment -%} Money-Back Guarantee {%- endcomment -%}
+  <div class="product-info__guarantee">
+    <svg class="product-info__guarantee-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="2"/>
+      <path d="M16 24l6 6 12-12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="product-info__guarantee-text">
+      <strong>100% Money-Back Guarantee</strong>
+      <p>We stand behind our products. If you're not satisfied, return within 30 days for a full refund.</p>
+    </div>
+  </div>
+
+</div>
+
+{%- comment -%} Structured Data for SEO {%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": {{ product.title | json }},
+  "image": {{ product.featured_image | image_url: width: 1200 | json }},
+  "description": {{ product.description | strip_html | json }},
+  "sku": {{ current_variant.sku | json }},
+  "brand": {
+    "@type": "Brand",
+    "name": {{ product.vendor | json }}
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": {{ request.origin | append: product.url | json }},
+    "priceCurrency": {{ cart.currency.iso_code | json }},
+    "price": {{ current_variant.price | money_without_currency | json }},
+    "availability": "{% if current_variant.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
+    "itemCondition": "https://schema.org/NewCondition"
+  }
+  {%- if product.metafields.reviews.rating.value -%}
+  ,
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": {{ product.metafields.reviews.rating.value | json }},
+    "reviewCount": {{ product.metafields.reviews.rating_count.value | default: 0 | json }}
+  }
+  {%- endif -%}
+}
+</script>
+
+<script src="{{ 'product-info-agent2.js' | asset_url }}" defer></script>

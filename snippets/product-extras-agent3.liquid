@@ -1,0 +1,487 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+PRODUCT EXTRAS - AGENT 3
+----------------------------------------------------------------------------------------------------------------------
+
+This snippet renders additional product information sections including reviews, shipping details, FAQ, and related
+products. Created as part of the multi-agent product page template development.
+
+********************************************
+Supported variables
+********************************************
+
+* product: the product on which to render the extra information
+* block: the block containing the settings (optional)
+{%- endcomment -%}
+
+{%- liquid
+  # Set default values
+  assign show_reviews = true
+  assign show_shipping = true
+  assign show_specs = true
+  assign show_faq = true
+  assign show_related = true
+  assign show_complementary = true
+  assign show_social_proof = true
+
+  if block
+    assign show_reviews = block.settings.show_reviews | default: true
+    assign show_shipping = block.settings.show_shipping | default: true
+    assign show_specs = block.settings.show_specs | default: true
+    assign show_faq = block.settings.show_faq | default: true
+    assign show_related = block.settings.show_related | default: true
+    assign show_complementary = block.settings.show_complementary | default: true
+    assign show_social_proof = block.settings.show_social_proof | default: true
+  endif
+-%}
+
+{{ 'product-extras-agent3.css' | asset_url | stylesheet_tag }}
+
+<div class="product-extras" id="product-extras-agent3" data-product-id="{{ product.id }}">
+
+  {%- comment -%}========== PRODUCT REVIEWS SECTION =========={%- endcomment -%}
+  {%- if show_reviews -%}
+    <div class="product-extras__section product-extras__reviews" id="product-reviews">
+      <div class="product-extras__header">
+        <h2 class="product-extras__heading h3">Customer Reviews</h2>
+        {%- if product.metafields.reviews.rating.value -%}
+          <div class="product-extras__rating-summary">
+            <span class="product-extras__rating-value">{{ product.metafields.reviews.rating.value | round: 1 }}</span>
+            <div class="product-extras__stars" role="img" aria-label="{{ product.metafields.reviews.rating.value }} out of 5 stars">
+              {%- liquid
+                assign rating_decimal = 0
+                assign decimal = product.metafields.reviews.rating.value | modulo: 1
+                if decimal >= 0.3 and decimal <= 0.7
+                  assign rating_decimal = 0.5
+                elsif decimal > 0.7
+                  assign rating_decimal = 1
+                endif
+                assign rating_full = product.metafields.reviews.rating.value | floor
+                assign rating_half = rating_decimal | times: 2
+                assign rating_empty = 5 | minus: rating_full | minus: rating_half | divided_by: 2
+              -%}
+
+              {%- for i in (1..rating_full) -%}
+                <svg class="product-extras__star product-extras__star--full" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M10 15.27L16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z"/>
+                </svg>
+              {%- endfor -%}
+
+              {%- if rating_half > 0 -%}
+                <svg class="product-extras__star product-extras__star--half" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="half-gradient-{{ product.id }}">
+                      <stop offset="50%" stop-color="currentColor"/>
+                      <stop offset="50%" stop-color="rgba(0,0,0,0.15)"/>
+                    </linearGradient>
+                  </defs>
+                  <path fill="url(#half-gradient-{{ product.id }})" d="M10 15.27L16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z"/>
+                </svg>
+              {%- endif -%}
+
+              {%- for i in (1..rating_empty) -%}
+                <svg class="product-extras__star product-extras__star--empty" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M10 15.27L16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z"/>
+                </svg>
+              {%- endfor -%}
+            </div>
+            <span class="product-extras__review-count">
+              Based on {{ product.metafields.reviews.rating_count | default: 0 }} reviews
+            </span>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="product-extras__reviews-container">
+        {%- comment -%}Placeholder for third-party review app integration{%- endcomment -%}
+        <div id="shopify-product-reviews" data-id="{{ product.id }}">
+          {%- comment -%}Review apps typically inject their widget here{%- endcomment -%}
+        </div>
+
+        {%- comment -%}Fallback UI for demo purposes{%- endcomment -%}
+        <div class="product-extras__reviews-list">
+          <button type="button" class="product-extras__cta-button button button--primary" aria-label="Write a review">
+            Write a Review
+          </button>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%}========== SHIPPING & RETURNS INFO =========={%- endcomment -%}
+  {%- if show_shipping -%}
+    <div class="product-extras__section product-extras__shipping" id="shipping-returns">
+      <div class="product-extras__header">
+        <h2 class="product-extras__heading h3">Shipping & Returns</h2>
+      </div>
+
+      <div class="product-extras__shipping-grid">
+        <div class="product-extras__shipping-card">
+          <div class="product-extras__shipping-icon">
+            {%- render 'icon' with 'delivery-truck', width: 24 -%}
+          </div>
+          <div class="product-extras__shipping-content">
+            <h3 class="product-extras__shipping-title">Free Shipping</h3>
+            <p class="product-extras__shipping-text">On orders over $50</p>
+          </div>
+        </div>
+
+        <div class="product-extras__shipping-card">
+          <div class="product-extras__shipping-icon">
+            {%- render 'icon' with 'return', width: 24 -%}
+          </div>
+          <div class="product-extras__shipping-content">
+            <h3 class="product-extras__shipping-title">Easy Returns</h3>
+            <p class="product-extras__shipping-text">30-day return policy</p>
+          </div>
+        </div>
+
+        <div class="product-extras__shipping-card">
+          <div class="product-extras__shipping-icon">
+            {%- render 'icon' with 'shield', width: 24 -%}
+          </div>
+          <div class="product-extras__shipping-content">
+            <h3 class="product-extras__shipping-title">Warranty</h3>
+            <p class="product-extras__shipping-text">1-year warranty included</p>
+          </div>
+        </div>
+
+        <div class="product-extras__shipping-card">
+          <div class="product-extras__shipping-icon">
+            {%- render 'icon' with 'package', width: 24 -%}
+          </div>
+          <div class="product-extras__shipping-content">
+            <h3 class="product-extras__shipping-title">Secure Packaging</h3>
+            <p class="product-extras__shipping-text">Protected & eco-friendly</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-extras__shipping-details">
+        {%- capture shipping_accordion_content -%}
+          <div class="prose">
+            <p><strong>Estimated Delivery:</strong> 3-5 business days</p>
+            <p><strong>Shipping Cost:</strong> Calculated at checkout</p>
+            {%- if shop.policies.shipping_policy != blank -%}
+              <p><a href="{{ shop.policies.shipping_policy.url }}" class="link">View full shipping policy</a></p>
+            {%- endif -%}
+          </div>
+        {%- endcapture -%}
+
+        {%- render 'accordion',
+          title: 'Shipping Details',
+          content: shipping_accordion_content,
+          show_title_as_text: true,
+          prose_content: false
+        -%}
+
+        {%- capture returns_accordion_content -%}
+          <div class="prose">
+            <p>We offer a 30-day return policy on most items. Items must be unused and in original packaging.</p>
+            {%- if shop.policies.refund_policy != blank -%}
+              <p><a href="{{ shop.policies.refund_policy.url }}" class="link">View full return policy</a></p>
+            {%- endif -%}
+          </div>
+        {%- endcapture -%}
+
+        {%- render 'accordion',
+          title: 'Returns & Exchanges',
+          content: returns_accordion_content,
+          show_title_as_text: true,
+          prose_content: false
+        -%}
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%}========== PRODUCT SPECIFICATIONS =========={%- endcomment -%}
+  {%- if show_specs and product.metafields.custom.specifications -%}
+    <div class="product-extras__section product-extras__specs" id="product-specifications">
+      <div class="product-extras__header">
+        <h2 class="product-extras__heading h3">Product Specifications</h2>
+      </div>
+
+      <div class="product-extras__specs-list">
+        {%- if product.metafields.custom.material -%}
+          <div class="product-extras__spec-item">
+            <span class="product-extras__spec-label">Material:</span>
+            <span class="product-extras__spec-value">{{ product.metafields.custom.material }}</span>
+          </div>
+        {%- endif -%}
+
+        {%- if product.metafields.custom.dimensions -%}
+          <div class="product-extras__spec-item">
+            <span class="product-extras__spec-label">Dimensions:</span>
+            <span class="product-extras__spec-value">{{ product.metafields.custom.dimensions }}</span>
+          </div>
+        {%- endif -%}
+
+        {%- if product.weight -%}
+          <div class="product-extras__spec-item">
+            <span class="product-extras__spec-label">Weight:</span>
+            <span class="product-extras__spec-value">{{ product.weight | weight_with_unit }}</span>
+          </div>
+        {%- endif -%}
+
+        {%- if product.metafields.custom.care_instructions -%}
+          <div class="product-extras__spec-item">
+            <span class="product-extras__spec-label">Care Instructions:</span>
+            <span class="product-extras__spec-value">{{ product.metafields.custom.care_instructions }}</span>
+          </div>
+        {%- endif -%}
+
+        {%- if product.selected_or_first_available_variant.sku != blank -%}
+          <div class="product-extras__spec-item">
+            <span class="product-extras__spec-label">SKU:</span>
+            <span class="product-extras__spec-value">{{ product.selected_or_first_available_variant.sku }}</span>
+          </div>
+        {%- endif -%}
+
+        {%- if product.selected_or_first_available_variant.barcode != blank -%}
+          <div class="product-extras__spec-item">
+            <span class="product-extras__spec-label">Barcode:</span>
+            <span class="product-extras__spec-value">{{ product.selected_or_first_available_variant.barcode }}</span>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- if product.tags.size > 0 -%}
+        <div class="product-extras__tags">
+          <h3 class="product-extras__tags-heading">Product Tags:</h3>
+          <div class="product-extras__tags-list">
+            {%- for tag in product.tags limit: 8 -%}
+              <span class="product-extras__tag">{{ tag }}</span>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  {%- comment -%}========== FAQ SECTION =========={%- endcomment -%}
+  {%- if show_faq -%}
+    <div class="product-extras__section product-extras__faq" id="product-faq">
+      <div class="product-extras__header">
+        <h2 class="product-extras__heading h3">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="product-extras__faq-list">
+        {%- capture faq_1_content -%}
+          <div class="prose">
+            <p>This product is available in multiple sizes and colors. Please refer to the variant selector above to see all available options.</p>
+          </div>
+        {%- endcapture -%}
+
+        {%- render 'accordion',
+          title: 'What sizes and colors are available?',
+          content: faq_1_content,
+          show_title_as_text: true,
+          prose_content: false
+        -%}
+
+        {%- capture faq_2_content -%}
+          <div class="prose">
+            <p>We recommend following the care instructions provided with your product. Generally, gentle washing and air drying will help maintain the quality.</p>
+          </div>
+        {%- endcapture -%}
+
+        {%- render 'accordion',
+          title: 'How should I care for this product?',
+          content: faq_2_content,
+          show_title_as_text: true,
+          prose_content: false
+        -%}
+
+        {%- capture faq_3_content -%}
+          <div class="prose">
+            <p>Yes, this product comes with a 1-year manufacturer warranty covering defects in materials and workmanship.</p>
+          </div>
+        {%- endcapture -%}
+
+        {%- render 'accordion',
+          title: 'Is this product covered by warranty?',
+          content: faq_3_content,
+          show_title_as_text: true,
+          prose_content: false
+        -%}
+
+        {%- capture faq_4_content -%}
+          <div class="prose">
+            <p>Standard shipping takes 3-5 business days. Expedited shipping options are available at checkout.</p>
+          </div>
+        {%- endcapture -%}
+
+        {%- render 'accordion',
+          title: 'How long does shipping take?',
+          content: faq_4_content,
+          show_title_as_text: true,
+          prose_content: false
+        -%}
+
+        {%- capture faq_5_content -%}
+          <div class="prose">
+            <p>Yes, we offer hassle-free returns within 30 days of purchase. Items must be in original condition with tags attached.</p>
+          </div>
+        {%- endcapture -%}
+
+        {%- render 'accordion',
+          title: 'Can I return this product?',
+          content: faq_5_content,
+          show_title_as_text: true,
+          prose_content: false
+        -%}
+      </div>
+
+      <div class="product-extras__faq-cta">
+        <button type="button" class="product-extras__cta-button button button--secondary">
+          Ask a Question
+        </button>
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%}========== RELATED PRODUCTS SECTION =========={%- endcomment -%}
+  {%- if show_related -%}
+    <div class="product-extras__section product-extras__related" id="related-products">
+      <div class="product-extras__header">
+        <h2 class="product-extras__heading h3">You May Also Like</h2>
+      </div>
+
+      <product-recommendations class="product-extras__recommendations" product="{{ product.id }}" limit="6" intent="related">
+        {%- if recommendations.performed and recommendations.products_count > 0 -%}
+          {%- assign carousel_id = 'related-carousel-agent3-' | append: product.id -%}
+
+          <div class="product-extras__carousel-wrapper">
+            <scroll-carousel id="{{ carousel_id }}" class="product-extras__product-carousel scroll-area snap-x" group-cells>
+              {%- for recommended_product in recommendations.products limit: 6 -%}
+                <div class="product-extras__product-card-wrapper">
+                  {%- render 'product-card',
+                    product: recommended_product,
+                    show_quick_buy: true,
+                    reveal: false
+                  -%}
+                </div>
+              {%- endfor -%}
+            </scroll-carousel>
+
+            {%- if recommendations.products_count > 1 -%}
+              <carousel-navigation aria-controls="{{ carousel_id }}" class="product-extras__carousel-nav page-dots">
+                {%- for i in (1..recommendations.products_count) limit: 6 -%}
+                  <button class="relative" aria-current="{% if forloop.first %}true{% else %}false{% endif %}">
+                    <span class="sr-only">{{ 'general.accessibility.go_to_item' | t: index: forloop.index }}</span>
+                  </button>
+                {%- endfor -%}
+              </carousel-navigation>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </product-recommendations>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%}========== COMPLEMENTARY PRODUCTS SECTION =========={%- endcomment -%}
+  {%- if show_complementary -%}
+    <div class="product-extras__section product-extras__complementary" id="complementary-products">
+      <div class="product-extras__header">
+        <h2 class="product-extras__heading h3">Frequently Bought Together</h2>
+      </div>
+
+      <product-recommendations class="product-extras__recommendations" product="{{ product.id }}" limit="4" intent="complementary">
+        {%- if recommendations.performed and recommendations.intent == 'complementary' and recommendations.products_count > 0 -%}
+          <div class="product-extras__complementary-list">
+            {%- for complementary_product in recommendations.products limit: 4 -%}
+              {%- render 'product-card-horizontal',
+                product: complementary_product,
+                show_quick_buy: true
+              -%}
+            {%- endfor -%}
+          </div>
+
+          <div class="product-extras__bundle-actions">
+            <button type="button" class="product-extras__bundle-button button button--primary">
+              Add Bundle to Cart
+            </button>
+            <p class="product-extras__bundle-savings">Save 15% when bought together</p>
+          </div>
+        {%- endif -%}
+      </product-recommendations>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%}========== SOCIAL PROOF SECTION =========={%- endcomment -%}
+  {%- if show_social_proof -%}
+    <div class="product-extras__section product-extras__social-proof" id="social-proof">
+      <div class="product-extras__header">
+        <h2 class="product-extras__heading h3">Why Choose Us</h2>
+      </div>
+
+      <div class="product-extras__badges-grid">
+        <div class="product-extras__badge-card">
+          <div class="product-extras__badge-icon">
+            {%- render 'icon' with 'checkmark-badge', width: 48 -%}
+          </div>
+          <h3 class="product-extras__badge-title">Certified Quality</h3>
+          <p class="product-extras__badge-text">All products are quality tested and certified</p>
+        </div>
+
+        <div class="product-extras__badge-card">
+          <div class="product-extras__badge-icon">
+            {%- render 'icon' with 'award', width: 48 -%}
+          </div>
+          <h3 class="product-extras__badge-title">Award Winning</h3>
+          <p class="product-extras__badge-text">Recognized for excellence in design</p>
+        </div>
+
+        <div class="product-extras__badge-card">
+          <div class="product-extras__badge-icon">
+            {%- render 'icon' with 'heart', width: 48 -%}
+          </div>
+          <h3 class="product-extras__badge-title">Customer Loved</h3>
+          <p class="product-extras__badge-text">Thousands of satisfied customers</p>
+        </div>
+
+        <div class="product-extras__badge-card">
+          <div class="product-extras__badge-icon">
+            {%- render 'icon' with 'leaf', width: 48 -%}
+          </div>
+          <h3 class="product-extras__badge-title">Eco-Friendly</h3>
+          <p class="product-extras__badge-text">Sustainably sourced materials</p>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+{%- comment -%}========== SCHEMA.ORG MICRODATA FOR SEO =========={%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": {{ product.title | json }},
+  "description": {{ product.description | strip_html | json }},
+  "image": {{ product.featured_image | image_url: width: 1200 | json }},
+  "sku": {{ product.selected_or_first_available_variant.sku | json }},
+  "brand": {
+    "@type": "Brand",
+    "name": {{ product.vendor | json }}
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": {{ shop.url | append: product.url | json }},
+    "priceCurrency": {{ cart.currency.iso_code | json }},
+    "price": {{ product.selected_or_first_available_variant.price | divided_by: 100.0 | json }},
+    "availability": "{% if product.selected_or_first_available_variant.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}"
+  }
+  {%- if product.metafields.reviews.rating.value -%},
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": {{ product.metafields.reviews.rating.value | json }},
+    "reviewCount": {{ product.metafields.reviews.rating_count | default: 0 | json }},
+    "bestRating": "5",
+    "worstRating": "1"
+  }
+  {%- endif -%}
+}
+</script>
+
+<script src="{{ 'product-extras-agent3.js' | asset_url }}" defer></script>
