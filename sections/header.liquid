@@ -122,8 +122,6 @@
   .product-mega-menu__item {
     display: flex;
     flex-direction: column;
-    text-decoration: none;
-    color: inherit;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     border-radius: 8px;
     overflow: hidden;
@@ -135,6 +133,14 @@
   .product-mega-menu__item:hover {
     transform: translateY(-4px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .product-mega-menu__link {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    text-decoration: none;
+    color: inherit;
   }
 
   .product-mega-menu__image-wrapper {
@@ -152,7 +158,7 @@
     transition: transform 0.3s ease;
   }
 
-  .product-mega-menu__item:hover .product-mega-menu__image {
+  .product-mega-menu__link:hover .product-mega-menu__image {
     transform: scale(1.05);
   }
 
@@ -240,6 +246,60 @@
   .product-mega-menu__badge--sold-out {
     background: rgba(0, 0, 0, 0.6);
     color: white;
+  }
+
+  /* Add to Cart Button Styles */
+  .product-mega-menu__actions {
+    padding: 0 1rem 1rem;
+  }
+
+  .product-mega-menu__form {
+    display: block;
+  }
+
+  .product-mega-menu__form form {
+    display: block;
+    margin: 0;
+  }
+
+  .product-mega-menu__add-to-cart {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: rgb(var(--color-scheme-text));
+    color: rgb(var(--color-scheme-background));
+    border: none;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .product-mega-menu__add-to-cart:hover:not(:disabled) {
+    background: rgba(var(--color-scheme-text), 0.85);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .product-mega-menu__add-to-cart:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  .product-mega-menu__add-to-cart svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .product-mega-menu__add-to-cart--disabled {
+    background: rgba(var(--color-scheme-text), 0.3);
+    cursor: not-allowed;
+    opacity: 0.6;
   }
 
   /* Ensure mega menu dropdown is wide enough for products */
@@ -862,9 +922,16 @@
           "label": "Product"
         },
         {
+          "type": "textarea",
+          "id": "custom_description",
+          "label": "Custom Description",
+          "info": "Add a custom description for this product in the menu. Leave blank to hide description.",
+          "default": ""
+        },
+        {
           "type": "checkbox",
-          "id": "show_description",
-          "label": "Show product description",
+          "id": "show_price",
+          "label": "Show price",
           "default": true
         },
         {
@@ -875,6 +942,12 @@
           "step": 10,
           "label": "Description length (characters)",
           "default": 100
+        },
+        {
+          "type": "checkbox",
+          "id": "show_add_to_cart",
+          "label": "Show Add to Cart button",
+          "default": true
         }
       ]
     }
