@@ -1,0 +1,282 @@
+{%- comment -%}
+========================================
+PRODUCT DETAILS - CLAUDE TEMPLATE
+========================================
+
+This section displays product information in tabbed format.
+Fully editable through blocks in the theme customizer.
+{%- endcomment -%}
+
+{%- if section.blocks.size > 0 -%}
+  {%- assign color_scheme_hash = section.settings.color_scheme.settings.background_gradient | default: section.settings.color_scheme.settings.background | md5 -%}
+
+  <div class="section-spacing color-scheme color-scheme--{{ section.settings.color_scheme.id }} color-scheme--bg-{{ color_scheme_hash }} {% if section.settings.separate_section_with_border %}bordered-section{% endif %}">
+    <div class="container container--md">
+      <div class="section-stack">
+        {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, content: section.settings.content -%}
+
+        <div class="product-details-tabs">
+          <div class="product-details-tabs__nav" role="tablist">
+            {%- for block in section.blocks -%}
+              <button
+                class="product-details-tabs__tab {% if forloop.first %}is-active{% endif %}"
+                role="tab"
+                aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+                aria-controls="tab-panel-{{ section.id }}-{{ forloop.index }}"
+                data-tab="{{ forloop.index }}"
+                {{ block.shopify_attributes }}
+              >
+                {{ block.settings.title }}
+              </button>
+            {%- endfor -%}
+          </div>
+
+          <div class="product-details-tabs__panels">
+            {%- for block in section.blocks -%}
+              <div
+                id="tab-panel-{{ section.id }}-{{ forloop.index }}"
+                class="product-details-tabs__panel {% if forloop.first %}is-active{% endif %}"
+                role="tabpanel"
+                data-panel="{{ forloop.index }}"
+              >
+                {%- if block.settings.image != blank -%}
+                  <div class="product-details-tabs__image">
+                    {%- capture sizes -%}(min-width: 750px) 600px, 100vw{%- endcapture -%}
+                    {{- block.settings.image | image_url: width: 1200 | image_tag: sizes: sizes, widths: '300,600,900,1200', loading: 'lazy' -}}
+                  </div>
+                {%- endif -%}
+
+                {%- if block.settings.content != blank -%}
+                  <div class="product-details-tabs__content prose">
+                    {{ block.settings.content }}
+                  </div>
+                {%- endif -%}
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .product-details-tabs__nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+    }
+
+    .product-details-tabs__tab {
+      background: transparent;
+      border: none;
+      border-bottom: 3px solid transparent;
+      color: inherit;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 1rem 1.5rem;
+      transition: all 0.2s ease;
+      margin-bottom: -2px;
+      opacity: 0.6;
+    }
+
+    .product-details-tabs__tab:hover {
+      opacity: 1;
+    }
+
+    .product-details-tabs__tab.is-active {
+      border-bottom-color: var(--primary-button-background, #ab8f80);
+      opacity: 1;
+    }
+
+    .product-details-tabs__panels {
+      position: relative;
+    }
+
+    .product-details-tabs__panel {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .product-details-tabs__panel.is-active {
+      display: block;
+    }
+
+    .product-details-tabs__image {
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .product-details-tabs__image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .product-details-tabs__content {
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media screen and (max-width: 749px) {
+      .product-details-tabs__nav {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .product-details-tabs__tab {
+        flex-shrink: 0;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+
+  <script>
+    (function() {
+      const tabButtons = document.querySelectorAll('.product-details-tabs__tab');
+      const tabPanels = document.querySelectorAll('.product-details-tabs__panel');
+
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const tabNumber = button.dataset.tab;
+
+          // Remove active class from all tabs and panels
+          tabButtons.forEach(btn => {
+            btn.classList.remove('is-active');
+            btn.setAttribute('aria-selected', 'false');
+          });
+          tabPanels.forEach(panel => {
+            panel.classList.remove('is-active');
+          });
+
+          // Add active class to clicked tab and corresponding panel
+          button.classList.add('is-active');
+          button.setAttribute('aria-selected', 'true');
+          const activePanel = document.querySelector(`[data-panel="${tabNumber}"]`);
+          if (activePanel) {
+            activePanel.classList.add('is-active');
+          }
+        });
+      });
+    })();
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Product Details - Claude",
+  "class": "shopify-section--product-details-claude",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "checkbox",
+      "id": "separate_section_with_border",
+      "label": "Separate section with border",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Section header"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Product Information"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Heading",
+      "default": "Everything You Need to Know"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Tab title",
+          "default": "Tab Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image (optional)"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Add your tab content here. You can include formatted text, lists, and more.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Details - Claude",
+      "blocks": [
+        {
+          "type": "tab",
+          "settings": {
+            "title": "Description",
+            "content": "<p>Add your detailed product description here.</p>"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "title": "Ingredients",
+            "content": "<p>List all ingredients and their benefits here.</p>"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "title": "How to Use",
+            "content": "<p>Provide step-by-step usage instructions here.</p>"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "title": "Shipping & Returns",
+            "content": "<p>Explain your shipping and return policies here.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

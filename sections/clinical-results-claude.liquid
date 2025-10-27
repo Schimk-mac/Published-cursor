@@ -1,0 +1,224 @@
+{%- comment -%}
+========================================
+CLINICAL RESULTS - CLAUDE TEMPLATE
+========================================
+
+This section displays clinical study results or statistics.
+Fully editable through blocks in the theme customizer.
+{%- endcomment -%}
+
+{%- if section.blocks.size > 0 -%}
+  {%- assign color_scheme_hash = section.settings.color_scheme.settings.background_gradient | default: section.settings.color_scheme.settings.background | md5 -%}
+
+  <div class="section-spacing color-scheme color-scheme--{{ section.settings.color_scheme.id }} color-scheme--bg-{{ color_scheme_hash }} {% if section.settings.separate_section_with_border %}bordered-section{% endif %}">
+    <div class="container">
+      <div class="section-stack">
+        {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, content: section.settings.content -%}
+
+        <div class="clinical-results" style="--results-per-row: {{ section.blocks.size }};">
+          {%- for block in section.blocks -%}
+            <div class="clinical-results__item" {{ block.shopify_attributes }}>
+              <div class="clinical-results__percentage" style="color: {{ block.settings.percentage_color }}">
+                {{ block.settings.percentage }}%
+              </div>
+              {%- if block.settings.description != blank -%}
+                <p class="clinical-results__description">{{ block.settings.description }}</p>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        </div>
+
+        {%- if section.settings.disclaimer != blank -%}
+          <div class="clinical-results__disclaimer">
+            {{ section.settings.disclaimer }}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .clinical-results {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem 2rem;
+      margin: 2rem 0;
+    }
+
+    .clinical-results__item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 2rem 1rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .clinical-results__item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .clinical-results__percentage {
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .clinical-results__description {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin: 0;
+      opacity: 0.9;
+    }
+
+    .clinical-results__disclaimer {
+      text-align: center;
+      font-size: 0.85rem;
+      opacity: 0.7;
+      margin-top: 2rem;
+      font-style: italic;
+    }
+
+    @media screen and (max-width: 749px) {
+      .clinical-results {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .clinical-results__percentage {
+        font-size: 2.5rem;
+      }
+
+      .clinical-results__item {
+        padding: 1.5rem 1rem;
+      }
+    }
+
+    @media screen and (min-width: 750px) and (max-width: 989px) {
+      .clinical-results {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media screen and (min-width: 990px) {
+      .clinical-results {
+        grid-template-columns: repeat(var(--results-per-row), 1fr);
+      }
+    }
+  </style>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Clinical Results - Claude",
+  "class": "shopify-section--clinical-results-claude",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-3"
+    },
+    {
+      "type": "checkbox",
+      "id": "separate_section_with_border",
+      "label": "Separate section with border",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Section header"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Clinically Proven"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Heading",
+      "default": "Real Results from Real People"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "text",
+      "id": "disclaimer",
+      "label": "Disclaimer",
+      "default": "*Based on a clinical study of 120 participants over 8 weeks"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "result",
+      "name": "Result",
+      "settings": [
+        {
+          "type": "range",
+          "id": "percentage",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Percentage",
+          "default": 85
+        },
+        {
+          "type": "color",
+          "id": "percentage_color",
+          "label": "Percentage color",
+          "default": "#ab8f80"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Saw visible improvements"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Clinical Results - Claude",
+      "blocks": [
+        {
+          "type": "result",
+          "settings": {
+            "percentage": 86,
+            "description": "Noticed improved texture",
+            "percentage_color": "#ab8f80"
+          }
+        },
+        {
+          "type": "result",
+          "settings": {
+            "percentage": 92,
+            "description": "Saw results within 4 weeks",
+            "percentage_color": "#ab8f80"
+          }
+        },
+        {
+          "type": "result",
+          "settings": {
+            "percentage": 88,
+            "description": "Would recommend to friends",
+            "percentage_color": "#ab8f80"
+          }
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6
+}
+{% endschema %}

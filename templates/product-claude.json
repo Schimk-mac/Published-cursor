@@ -1,0 +1,309 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product-claude",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "container_size": "full",
+        "desktop_media_layout": "grid",
+        "mobile_controls": "thumbnails",
+        "enable_media_autoplay": true,
+        "enable_video_looping": true,
+        "enable_image_zoom": true
+      }
+    },
+    "trust_badges": {
+      "type": "trust-badges-claude",
+      "blocks": {
+        "badge_1": {
+          "type": "badge",
+          "settings": {
+            "icon": "checkmark",
+            "text": "Free Shipping Over $50",
+            "icon_color": "#ab8f80"
+          }
+        },
+        "badge_2": {
+          "type": "badge",
+          "settings": {
+            "icon": "return",
+            "text": "30-Day Money Back Guarantee",
+            "icon_color": "#ab8f80"
+          }
+        },
+        "badge_3": {
+          "type": "badge",
+          "settings": {
+            "icon": "leaf",
+            "text": "100% Natural Ingredients",
+            "icon_color": "#ab8f80"
+          }
+        },
+        "badge_4": {
+          "type": "badge",
+          "settings": {
+            "icon": "award",
+            "text": "Clinically Tested",
+            "icon_color": "#ab8f80"
+          }
+        }
+      },
+      "block_order": [
+        "badge_1",
+        "badge_2",
+        "badge_3",
+        "badge_4"
+      ],
+      "settings": {
+        "color_scheme": "scheme-3",
+        "separate_section_with_border": false
+      }
+    },
+    "key_benefits": {
+      "type": "key-benefits-claude",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "leaf",
+            "heading": "Natural & Pure",
+            "text": "Made with 100% natural ingredients, free from harmful chemicals and artificial additives.",
+            "icon_color": "#ab8f80"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "heart",
+            "heading": "Gentle Formula",
+            "text": "Suitable for all skin types, including sensitive skin. Dermatologist tested and approved.",
+            "icon_color": "#ab8f80"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "sparkles",
+            "heading": "Visible Results",
+            "text": "See noticeable improvements in just 2-4 weeks with consistent use.",
+            "icon_color": "#ab8f80"
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "icon": "recycle",
+            "heading": "Sustainable",
+            "text": "Eco-friendly packaging and sustainably sourced ingredients for a better planet.",
+            "icon_color": "#ab8f80"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "separate_section_with_border": true,
+        "subheading": "Why Choose Us",
+        "title": "Key Benefits",
+        "benefits_per_row_mobile": 2,
+        "benefits_per_row_desktop": 4
+      }
+    },
+    "product_details": {
+      "type": "product-details-claude",
+      "blocks": {
+        "tab_1": {
+          "type": "tab",
+          "settings": {
+            "title": "Description",
+            "content": "<p>Add your detailed product description here. Explain what makes your product unique and how it can benefit your customers.</p>"
+          }
+        },
+        "tab_2": {
+          "type": "tab",
+          "settings": {
+            "title": "Ingredients",
+            "content": "<p>List all ingredients here with explanations of their benefits.</p>"
+          }
+        },
+        "tab_3": {
+          "type": "tab",
+          "settings": {
+            "title": "How to Use",
+            "content": "<p>Provide clear, step-by-step instructions on how to use your product for best results.</p>"
+          }
+        },
+        "tab_4": {
+          "type": "tab",
+          "settings": {
+            "title": "Shipping & Returns",
+            "content": "<p>Explain your shipping policy, estimated delivery times, and return policy.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "tab_1",
+        "tab_2",
+        "tab_3",
+        "tab_4"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "separate_section_with_border": true,
+        "subheading": "Product Information",
+        "title": "Everything You Need to Know"
+      }
+    },
+    "clinical_results": {
+      "type": "clinical-results-claude",
+      "blocks": {
+        "result_1": {
+          "type": "result",
+          "settings": {
+            "percentage": "86",
+            "description": "Noticed improved skin texture"
+          }
+        },
+        "result_2": {
+          "type": "result",
+          "settings": {
+            "percentage": "92",
+            "description": "Saw visible results within 4 weeks"
+          }
+        },
+        "result_3": {
+          "type": "result",
+          "settings": {
+            "percentage": "88",
+            "description": "Would recommend to friends"
+          }
+        }
+      },
+      "block_order": [
+        "result_1",
+        "result_2",
+        "result_3"
+      ],
+      "settings": {
+        "color_scheme": "scheme-3",
+        "separate_section_with_border": true,
+        "subheading": "Clinically Proven",
+        "title": "Real Results from Real People",
+        "content": "<p>Based on a clinical study of 120 participants over 8 weeks.</p>"
+      }
+    },
+    "reviews": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "judge_me_reviews"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "separate_section_with_border": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "category_1": {
+          "type": "category",
+          "settings": {
+            "title": "Product Information",
+            "icon": "question_mark"
+          }
+        },
+        "question_1": {
+          "type": "question",
+          "settings": {
+            "question": "How do I use this product?",
+            "answer": "<p>Apply a small amount to clean, dry skin. Massage gently in circular motions until fully absorbed. Use morning and evening for best results.</p>"
+          }
+        },
+        "question_2": {
+          "type": "question",
+          "settings": {
+            "question": "Is this suitable for sensitive skin?",
+            "answer": "<p>Yes! Our formula is dermatologist-tested and suitable for all skin types, including sensitive skin. However, we always recommend doing a patch test first.</p>"
+          }
+        },
+        "category_2": {
+          "type": "category",
+          "settings": {
+            "title": "Shipping & Returns",
+            "icon": "shipment"
+          }
+        },
+        "question_3": {
+          "type": "question",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "<p>We offer a 30-day money-back guarantee. If you're not completely satisfied, return the product within 30 days for a full refund.</p>"
+          }
+        },
+        "question_4": {
+          "type": "question",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": "<p>Standard shipping takes 5-7 business days. Expedited shipping options are available at checkout.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "category_1",
+        "question_1",
+        "question_2",
+        "category_2",
+        "question_3",
+        "question_4"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "separate_section_with_border": true,
+        "show_categories": true,
+        "subheading": "Have Questions?",
+        "title": "Frequently Asked Questions",
+        "content": ""
+      }
+    },
+    "related_products": {
+      "type": "related-products",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "separate_section_with_border": true,
+        "hide_product_information": false,
+        "stack_products": false,
+        "recommendations_count": 8,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "horizontal_spacing_factor": 1,
+        "vertical_spacing_factor": 1,
+        "subheading": "Complete Your Routine",
+        "title": "You May Also Like",
+        "content": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "trust_badges",
+    "key_benefits",
+    "product_details",
+    "clinical_results",
+    "reviews",
+    "faq",
+    "related_products"
+  ]
+}

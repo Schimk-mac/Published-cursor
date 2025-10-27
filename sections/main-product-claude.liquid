@@ -1,0 +1,162 @@
+{%- comment -%}
+========================================
+PRODUCT PAGE - CLAUDE TEMPLATE
+========================================
+
+This section provides a comprehensive product page layout following
+the guideline recommendations with full theme customizer editability.
+
+Features:
+- Product Gallery with zoom, carousel, thumbnails
+- Product Info (pricing, variants, add to cart)
+- Fully editable through Shopify admin
+{%- endcomment -%}
+
+{%- liquid
+  assign color_scheme_hash = section.settings.color_scheme.settings.background_gradient | default: section.settings.color_scheme.settings.background | md5
+  capture product_form_id
+    echo 'product-form-claude-' | append: product.id | append: '-' | append: section.id
+  endcapture
+-%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --product-grid: "product-gallery" "product-info" / minmax(0, 1fr);
+  }
+
+  @media screen and (min-width: 1000px) {
+    #shopify-section-{{ section.id }} {
+      --product-grid: "product-gallery product-info" / minmax(0, 1fr) minmax(0, 420px);
+    }
+  }
+</style>
+
+<div class="section-spacing section-spacing--tight color-scheme color-scheme--{{ section.settings.color_scheme.id }} color-scheme--bg-{{ color_scheme_hash }}">
+  <div class="container {% unless section.settings.container_size == 'full' %}container--{{ section.settings.container_size }}{% endunless %}">
+    <product-rerender id="product-info-{{ product.id }}-{{ section.id }}" observe-form="{{ product_form_id }}" allow-partial-rerender>
+      <div class="product">
+
+        {%- comment -%}========== PRODUCT GALLERY =========={%- endcomment -%}
+        {%- if product.media.size > 0 -%}
+          {%- render 'product-gallery-agent1',
+              product: product,
+              product_form_id: product_form_id,
+              enable_image_zoom: section.settings.enable_image_zoom,
+              mobile_controls: section.settings.mobile_controls,
+              enable_media_autoplay: section.settings.enable_media_autoplay,
+              enable_video_looping: section.settings.enable_video_looping,
+              desktop_layout: section.settings.desktop_media_layout -%}
+        {%- endif -%}
+
+        {%- comment -%}========== PRODUCT INFO & PURCHASE =========={%- endcomment -%}
+        {%- render 'product-info-agent2',
+          product: product,
+          product_form_id: product_form_id,
+          context: 'main_product_claude' -%}
+
+      </div>
+    </product-rerender>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product - Claude",
+  "class": "shopify-section--main-product-claude",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "select",
+      "id": "container_size",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "Page width"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "full",
+          "label": "Full width"
+        }
+      ],
+      "default": "page-width",
+      "label": "Container size"
+    },
+    {
+      "type": "header",
+      "content": "Gallery Settings"
+    },
+    {
+      "type": "select",
+      "id": "desktop_media_layout",
+      "options": [
+        {
+          "value": "carousel_thumbnails_left",
+          "label": "Carousel with left thumbnails"
+        },
+        {
+          "value": "carousel_thumbnails_bottom",
+          "label": "Carousel with bottom thumbnails"
+        },
+        {
+          "value": "grid",
+          "label": "Grid"
+        }
+      ],
+      "default": "carousel_thumbnails_left",
+      "label": "Desktop media layout"
+    },
+    {
+      "type": "select",
+      "id": "mobile_controls",
+      "options": [
+        {
+          "value": "thumbnails",
+          "label": "Thumbnails"
+        },
+        {
+          "value": "arrows",
+          "label": "Arrows"
+        }
+      ],
+      "default": "thumbnails",
+      "label": "Mobile carousel controls"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_image_zoom",
+      "label": "Enable image zoom",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_media_autoplay",
+      "label": "Autoplay media",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_video_looping",
+      "label": "Loop videos",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

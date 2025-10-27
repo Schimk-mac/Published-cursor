@@ -1,0 +1,232 @@
+{%- comment -%}
+========================================
+TRUST BADGES - CLAUDE TEMPLATE
+========================================
+
+This section displays trust badges to build customer confidence.
+Fully editable through blocks in the theme customizer.
+{%- endcomment -%}
+
+{%- if section.blocks.size > 0 -%}
+  {%- assign color_scheme_hash = section.settings.color_scheme.settings.background_gradient | default: section.settings.color_scheme.settings.background | md5 -%}
+
+  <div class="section-spacing {% if section.settings.remove_vertical_spacing %}section-spacing--no-vertical{% endif %} color-scheme color-scheme--{{ section.settings.color_scheme.id }} color-scheme--bg-{{ color_scheme_hash }} {% if section.settings.separate_section_with_border %}bordered-section{% endif %}">
+    <div class="container">
+      <div class="trust-badges">
+        {%- for block in section.blocks -%}
+          <div class="trust-badges__item" {{ block.shopify_attributes }}>
+            {%- if block.settings.custom_icon != blank -%}
+              {%- capture sizes -%}{{ block.settings.icon_width }}px{%- endcapture -%}
+              {%- capture widths -%}{{ block.settings.icon_width }}, {{ block.settings.icon_width | times: 2 | at_most: block.settings.custom_icon.width }}{%- endcapture -%}
+              {%- capture style -%}--image-max-width: {{ block.settings.icon_width }}px{%- endcapture -%}
+              <div class="trust-badges__icon">
+                {{- block.settings.custom_icon | image_url: width: block.settings.custom_icon.width | image_tag: sizes: sizes, widths: widths, class: 'constrained-image', style: style -}}
+              </div>
+            {%- elsif block.settings.icon != 'none' -%}
+              <div class="trust-badges__icon" style="color: {{ block.settings.icon_color }}">
+                {%- render 'icon' with block.settings.icon, width: 24, height: 24 -%}
+              </div>
+            {%- endif -%}
+            {%- if block.settings.text != blank -%}
+              <p class="trust-badges__text">{{ block.settings.text }}</p>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .trust-badges {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    .trust-badges__item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .trust-badges__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+    }
+
+    .trust-badges__icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .trust-badges__text {
+      font-size: 0.9rem;
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    @media screen and (max-width: 749px) {
+      .trust-badges {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+    }
+  </style>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Trust Badges - Claude",
+  "class": "shopify-section--trust-badges-claude",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-3"
+    },
+    {
+      "type": "checkbox",
+      "id": "separate_section_with_border",
+      "label": "Separate section with border",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_vertical_spacing",
+      "label": "Remove vertical spacing",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Trust Badge",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "checkmark",
+              "label": "Checkmark"
+            },
+            {
+              "value": "return",
+              "label": "Return/Refund"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf (Natural)"
+            },
+            {
+              "value": "award",
+              "label": "Award"
+            },
+            {
+              "value": "heart",
+              "label": "Heart"
+            },
+            {
+              "value": "shipment",
+              "label": "Shipping"
+            },
+            {
+              "value": "lock",
+              "label": "Lock (Security)"
+            },
+            {
+              "value": "sparkles",
+              "label": "Sparkles"
+            },
+            {
+              "value": "recycle",
+              "label": "Recycle"
+            }
+          ],
+          "default": "checkmark"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_icon",
+          "label": "Custom icon image (optional)",
+          "info": "Replaces the icon if provided"
+        },
+        {
+          "type": "range",
+          "id": "icon_width",
+          "min": 16,
+          "max": 80,
+          "step": 4,
+          "unit": "px",
+          "label": "Icon width",
+          "default": 48
+        },
+        {
+          "type": "color",
+          "id": "icon_color",
+          "label": "Icon color",
+          "default": "#ab8f80"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Trust badge text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust Badges - Claude",
+      "blocks": [
+        {
+          "type": "badge",
+          "settings": {
+            "icon": "checkmark",
+            "text": "Free Shipping Over $50",
+            "icon_color": "#ab8f80"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "icon": "return",
+            "text": "30-Day Money Back",
+            "icon_color": "#ab8f80"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "icon": "leaf",
+            "text": "100% Natural",
+            "icon_color": "#ab8f80"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "icon": "award",
+            "text": "Clinically Tested",
+            "icon_color": "#ab8f80"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
