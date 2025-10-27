@@ -1,0 +1,98 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+PRODUCT MEGA MENU COMPONENT
+----------------------------------------------------------------------------------------------------------------------
+
+Render a mega-menu with product cards. This allows merchants to showcase products directly in the navigation menu.
+
+********************************************
+Supported variables
+********************************************
+
+* link: the parent menu link (optional)
+* block: the product_menu block containing the heading
+* section: the section object to access all blocks
+{%- endcomment -%}
+
+{%- liquid
+  assign product_menu_id = block.id
+  assign product_blocks = section.blocks | where: 'type', 'product_item'
+  assign menu_heading = block.settings.heading | default: 'Featured Products'
+-%}
+
+<div class="product-mega-menu" {{ block.shopify_attributes }}>
+  {%- if menu_heading != blank -%}
+    <div class="product-mega-menu__header">
+      <h3 class="h5">{{ menu_heading }}</h3>
+    </div>
+  {%- endif -%}
+
+  <div class="product-mega-menu__grid">
+    {%- for product_block in product_blocks -%}
+      {%- liquid
+        assign product = product_block.settings.product
+        assign show_description = product_block.settings.show_description
+        assign description_length = product_block.settings.description_length | default: 100
+      -%}
+
+      {%- if product != blank -%}
+        <a href="{{ product.url }}" class="product-mega-menu__item" {{ product_block.shopify_attributes }}>
+          <div class="product-mega-menu__image-wrapper">
+            {%- if product.featured_image -%}
+              <img
+                src="{{ product.featured_image | image_url: width: 300 }}"
+                srcset="{{ product.featured_image | image_url: width: 300 }} 300w,
+                        {{ product.featured_image | image_url: width: 600 }} 600w"
+                sizes="(min-width: 1000px) 250px, 200px"
+                alt="{{ product.featured_image.alt | escape }}"
+                loading="lazy"
+                width="300"
+                height="{{ 300 | divided_by: product.featured_image.aspect_ratio | ceil }}"
+                class="product-mega-menu__image"
+              >
+            {%- else -%}
+              <div class="product-mega-menu__image product-mega-menu__image--placeholder">
+                {%- render 'icon' with 'image-placeholder' -%}
+              </div>
+            {%- endif -%}
+          </div>
+
+          <div class="product-mega-menu__content">
+            <h4 class="product-mega-menu__title">{{ product.title }}</h4>
+
+            {%- if show_description and product.description != blank -%}
+              <p class="product-mega-menu__description">
+                {{ product.description | strip_html | truncate: description_length }}
+              </p>
+            {%- endif -%}
+
+            <div class="product-mega-menu__price">
+              {%- if product.compare_at_price > product.price -%}
+                <span class="product-mega-menu__price--sale">
+                  {{ product.price | money }}
+                </span>
+                <span class="product-mega-menu__price--compare">
+                  {{ product.compare_at_price | money }}
+                </span>
+              {%- else -%}
+                <span class="product-mega-menu__price--regular">
+                  {{ product.price | money }}
+                </span>
+              {%- endif -%}
+            </div>
+
+            {%- if product.available == false -%}
+              <span class="product-mega-menu__badge product-mega-menu__badge--sold-out">
+                Sold Out
+              </span>
+            {%- elsif product.compare_at_price > product.price -%}
+              <span class="product-mega-menu__badge product-mega-menu__badge--sale">
+                Sale
+              </span>
+            {%- endif -%}
+          </div>
+        </a>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</div>
