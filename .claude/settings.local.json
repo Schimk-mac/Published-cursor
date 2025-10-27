@@ -19,7 +19,18 @@
       "Bash(\"C:\\Program Files\\GitHub CLI\\gh.exe\" repo create shopify-published-cursor-theme --public --source=. --remote=origin --push)",
       "Bash(\"C:\\Program Files\\GitHub CLI\\gh.exe\" repo rename Published-cursor)",
       "Bash(\"C:\\Program Files\\GitHub CLI\\gh.exe\" repo rename Published-cursor --yes)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(git fetch:*)",
+      "Bash(git checkout:*)",
+      "Bash(git merge:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(ls:*)",
+      "Bash(powershell -ExecutionPolicy Bypass -File validate-integration.ps1:*)",
+      "Bash(taskkill:*)",
+      "Bash(timeout:*)",
+      "Bash(powershell -Command \"Stop-Process -Id 68892 -Force; Write-Host ''Dev server stopped''\")",
+      "Bash(powershell -Command:*)"
     ],
     "deny": [],
     "ask": []
