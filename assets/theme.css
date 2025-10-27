@@ -6001,15 +6001,22 @@ product-rerender {
   max-height: var(--product-gallery-thumbnail-list-max-height, none);
   scroll-snap-type: both mandatory;
   overscroll-behavior: contain;
-  scrollbar-width: none;
   grid-template-columns: none;
   display: grid;
   position: relative;
   overflow: auto;
 }
 
-.product-gallery__thumbnail-scroller::-webkit-scrollbar {
-  display: none;
+/* Hide scrollbar on mobile only while keeping scroll functionality */
+@media screen and (max-width: 999px) {
+  .product-gallery__thumbnail-scroller {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+
+  .product-gallery__thumbnail-scroller::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
 }
 
 .product-gallery__thumbnail {
