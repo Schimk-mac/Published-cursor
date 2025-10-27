@@ -1,0 +1,707 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "scrolling_content_ETfj88": {
+      "type": "scrolling-content",
+      "settings": {
+        "separate_section_with_border": true,
+        "scrolling_speed": 0.3,
+        "scroll_direction": "left",
+        "pause_on_hover": false,
+        "text_font": "heading",
+        "text_font_size_mobile": 20,
+        "text_font_size_desktop": 36,
+        "section_vertical_spacing_mobile": 10,
+        "section_vertical_spacing_desktop": 14,
+        "item_horizontal_spacing_mobile": 80,
+        "item_horizontal_spacing_desktop": 120,
+        "background": "#dccfc4",
+        "text_color": "#62554a"
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "7f22475e-0d87-46ac-a6e1-5d7d69c0e675": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "a0f6af01-3e75-4a82-8043-40e14c466476": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h4"
+          }
+        },
+        "text_JyqjBb": {
+          "type": "text",
+          "settings": {
+            "text": "<h6><em><strong>FROM WET TO STRAIGHT IN ONE STEP</strong></em></h6>"
+          }
+        },
+        "b16e2134-e125-4a5a-b6f2-4669975512d8": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "bogos_io_free_gift_mix_match_view_t7gVca": {
+          "type": "shopify://apps/bogos-io-free-gift/blocks/mix-match-view/0432bba6-720a-4e95-be5a-b868386f7aa6",
+          "disabled": true,
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "collapse_content": false,
+            "show_below_gallery": false
+          }
+        },
+        "bogos_io_free_gift_bundle_view_eGmLLM": {
+          "type": "shopify://apps/bogos-io-free-gift/blocks/bundle-view/0432bba6-720a-4e95-be5a-b868386f7aa6",
+          "settings": {}
+        },
+        "ac5a8ebd-0e8d-4a6b-90bc-5a354ed6906e": {
+          "type": "text",
+          "source": "{{ product.metafields.custom.ingrediant.value }}",
+          "settings": {
+            "text": "{{ product.metafields.custom.ingrediant.value.ingredients | metafield_tag }}<p></p>"
+          }
+        },
+        "bogos_io_free_gift_gift_thumbnail_view_igJYpQ": {
+          "type": "shopify://apps/bogos-io-free-gift/blocks/gift-thumbnail-view/0432bba6-720a-4e95-be5a-b868386f7aa6",
+          "settings": {}
+        },
+        "6914e2d5-f8c1-4362-a1c7-5fe8ab17c193": {
+          "type": "product_variations",
+          "settings": {
+            "option_name": "{{ product.metafields.custom.variation_value.value }}",
+            "option_value_metafield": "{{ product.metafields.custom.variation_value.value }}",
+            "products": "{{ product.metafields.custom.add_definition.value }}",
+            "selector_style": "variant_image"
+          }
+        },
+        "5d92abc3-5ee5-4044-8b82-1411dd185d50": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": true,
+            "selector_style": "block",
+            "swatch_selector_style": "block_swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "bogos_io_free_gift_fbt_upsell_view_WCBXca": {
+          "type": "shopify://apps/bogos-io-free-gift/blocks/fbt-upsell-view/0432bba6-720a-4e95-be5a-b868386f7aa6",
+          "settings": {}
+        },
+        "d938901b-542f-46da-bc21-f950d0388b4d": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<div id=\"omnisend-embedded-v2-653a54e33d4876c10d6d2c2f\"></div>"
+          }
+        },
+        "bogos_io_free_gift_quantity_break_view_e3yVMh": {
+          "type": "shopify://apps/bogos-io-free-gift/blocks/quantity-break-view/0432bba6-720a-4e95-be5a-b868386f7aa6",
+          "settings": {}
+        },
+        "72a549f0-d6bd-48b2-9807-d8a7c21efd71": {
+          "type": "payment_terms",
+          "settings": {}
+        },
+        "bogos_io_free_gift_bundle_page_button_view_78DBPq": {
+          "type": "shopify://apps/bogos-io-free-gift/blocks/bundle-page-button-view/0432bba6-720a-4e95-be5a-b868386f7aa6",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "{{ product.metafields.custom[\"2nd_\"].value }}",
+            "atc_button_text_color": "{{ product.metafields.custom.add_to_cart_text_color.value }}",
+            "payment_button_background": "rgba(0,0,0,0)",
+            "payment_button_text_color": ""
+          }
+        },
+        "liquid_qWkXiD": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<div class=\"hair-dryer-features\">\n  <div class=\"feature-block\" style=\"display: flex; align-items: center; margin-bottom: 1rem;\">\n    <div class=\"feature-icon\" style=\"font-size: 24px; margin-right: 1rem;\">🔥</div>\n    <div class=\"feature-text\" style=\"font-size: 16px; line-height: 1.4;\">\n      Minimal heat damage: No hot plates or extreme heat, ensuring hair health.\n    </div>\n  </div>\n\n  <div class=\"feature-block\" style=\"display: flex; align-items: center; margin-bottom: 1rem;\">\n    <div class=\"feature-icon\" style=\"font-size: 24px; margin-right: 1rem;\">💨</div>\n    <div class=\"feature-text\" style=\"font-size: 16px; line-height: 1.4;\">\n      High-speed BLDC motor: Delivers wet-to-straight styling with precision.\n    </div>\n  </div>\n\n  <div class=\"feature-block\" style=\"display: flex; align-items: center; margin-bottom: 1rem;\">\n    <div class=\"feature-icon\" style=\"font-size: 24px; margin-right: 1rem;\">🌡️</div>\n    <div class=\"feature-text\" style=\"font-size: 16px; line-height: 1.4;\">\n      Temperature regulation: Glass bead thermistors adjust airflow 30 times per second to prevent overheating.\n    </div>\n  </div>\n\n  <div class=\"feature-block\" style=\"display: flex; align-items: center; margin-bottom: 1rem;\">\n    <div class=\"feature-icon\" style=\"font-size: 24px; margin-right: 1rem;\">⏱️</div>\n    <div class=\"feature-text\" style=\"font-size: 16px; line-height: 1.4;\">\n      One-step convenience: Simultaneously dries and styles for a sleek, finished look.\n    </div>\n  </div>\n\n  <div class=\"feature-block\" style=\"display: flex; align-items: center; margin-bottom: 1rem;\">\n    <div class=\"feature-icon\" style=\"font-size: 24px; margin-right: 1rem;\">☀️</div>\n    <div class=\"feature-text\" style=\"font-size: 16px; line-height: 1.4;\">\n      Protects natural shine: Maintains hair moisture for a smooth, radiant finish.\n    </div>\n  </div>\n\n  <div class=\"feature-block\" style=\"display: flex; align-items: center; margin-bottom: 1rem;\">\n    <div class=\"feature-icon\" style=\"font-size: 24px; margin-right: 1rem;\">🧴</div>\n    <div class=\"feature-text\" style=\"font-size: 16px; line-height: 1.4;\">\n      Dry mode: Refresh and revitalise your style, giving your hair a quick boost anytime.\n    </div>\n  </div>\n\n  <div class=\"feature-block\" style=\"display: flex; align-items: center; margin-bottom: 1rem;\">\n    <div class=\"feature-icon\" style=\"font-size: 24px; margin-right: 1rem;\">❄️</div>\n    <div class=\"feature-text\" style=\"font-size: 16px; line-height: 1.4;\">\n      Cool mode: Lock in your look with cool mode, setting your style for a flawless finish that lasts.\n    </div>\n  </div>\n</div>"
+          }
+        },
+        "image_ejbCyb": {
+          "type": "image",
+          "settings": {
+            "image": "{{ product.metafields.custom.icons_symbols_image.value }}",
+            "alignment": "center",
+            "width_mode": "full_width",
+            "max_width": 300,
+            "mobile_max_width": 200
+          }
+        },
+        "share_buttons": {
+          "type": "share_buttons",
+          "settings": {}
+        },
+        "accordion_yxYBhn": {
+          "type": "accordion",
+          "source": "{{ product.metafields.custom.description_content.value }}",
+          "settings": {
+            "show_below_gallery": true,
+            "icon": "none",
+            "title": "{{ product.metafields.custom.description_content.value.title.value }}",
+            "content": "<p>{{ product.metafields.custom.description_content.value.content | metafield_tag }}</p>",
+            "liquid": "",
+            "page": ""
+          }
+        },
+        "2311d3cf-3e00-47fa-aca9-55c6cae621dd": {
+          "type": "accordion",
+          "repeater": "{{ product.metafields.custom.qa_metaobject.value }}",
+          "settings": {
+            "show_below_gallery": true,
+            "icon": "none",
+            "title": "<strong>{{ block.repeater.title.value }}</strong>",
+            "content": "<p>{{ block.repeater.answer | metafield_tag }}</p>",
+            "liquid": "",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "7f22475e-0d87-46ac-a6e1-5d7d69c0e675",
+        "a0f6af01-3e75-4a82-8043-40e14c466476",
+        "text_JyqjBb",
+        "b16e2134-e125-4a5a-b6f2-4669975512d8",
+        "bogos_io_free_gift_mix_match_view_t7gVca",
+        "description",
+        "bogos_io_free_gift_bundle_view_eGmLLM",
+        "ac5a8ebd-0e8d-4a6b-90bc-5a354ed6906e",
+        "bogos_io_free_gift_gift_thumbnail_view_igJYpQ",
+        "6914e2d5-f8c1-4362-a1c7-5fe8ab17c193",
+        "5d92abc3-5ee5-4044-8b82-1411dd185d50",
+        "bogos_io_free_gift_fbt_upsell_view_WCBXca",
+        "d938901b-542f-46da-bc21-f950d0388b4d",
+        "bogos_io_free_gift_quantity_break_view_e3yVMh",
+        "72a549f0-d6bd-48b2-9807-d8a7c21efd71",
+        "bogos_io_free_gift_bundle_page_button_view_78DBPq",
+        "buy_buttons",
+        "liquid_qWkXiD",
+        "image_ejbCyb",
+        "share_buttons",
+        "accordion_yxYBhn",
+        "2311d3cf-3e00-47fa-aca9-55c6cae621dd"
+      ],
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "container_size": "full",
+        "product_info_size": 35,
+        "show_sticky_add_to_cart": true,
+        "center_basic_info": false,
+        "desktop_media_layout": "grid",
+        "desktop_media_grid_gap": 3,
+        "mobile_controls": "thumbnails",
+        "enable_media_autoplay": true,
+        "enable_video_looping": true,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3
+      }
+    },
+    "image_with_text_h9pApC": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_zA7mgW": {
+          "type": "heading",
+          "settings": {
+            "text": "Feel the Difference with SuperSilk",
+            "heading_tag": "h4"
+          }
+        },
+        "richtext_AUdfFz": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Why settle for ordinary when you can have extraordinary? With SuperSilk, every day can be a great hair day. This game-changing tool not only saves you time but also transforms your styling experience with minimal effort and maximum results. Achieve salon-worthy perfection in minutes, all while keeping your hair healthy, shiny, and full of life.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_zA7mgW",
+        "richtext_AUdfFz"
+      ],
+      "name": "t:sections.image_with_text.presets.image_with_text.name",
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "image": "shopify://shop_images/241122_TNS_HOT_TOOLS_04_0565_1.webp",
+        "mobile_image": "shopify://shop_images/241122_TNS_HOT_TOOLS_04_0565_1.webp",
+        "reveal_on_scroll": true,
+        "image_position": "start",
+        "content_width": "sm",
+        "remove_vertical_spacing": true
+      }
+    },
+    "image_with_text_T4JmrE": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_YdPMPW": {
+          "type": "heading",
+          "settings": {
+            "text": "Revolutionise Your Hair Routine",
+            "heading_tag": "h4"
+          }
+        },
+        "richtext_iP9C3R": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Don’t wait to upgrade your routine—SuperSilk is the ultimate styling tool you’ve been dreaming of. Say goodbye to damage and hello to sleek, stunning hair with just one step. Get yours today and experience the magic of effortless beauty!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_YdPMPW",
+        "richtext_iP9C3R"
+      ],
+      "name": "t:sections.image_with_text.presets.image_with_text.name",
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "image": "shopify://shop_images/241122_TNS_HOT_TOOLS_04_0991_1.webp",
+        "mobile_image": "shopify://shop_images/241122_TNS_HOT_TOOLS_04_0991_1.webp",
+        "reveal_on_scroll": true,
+        "image_position": "end",
+        "content_width": "sm",
+        "remove_vertical_spacing": true
+      }
+    },
+    "tabs_piMhqX": {
+      "type": "tabs",
+      "blocks": {
+        "tab_FJ8QcQ": {
+          "type": "tab",
+          "settings": {
+            "title": "Why Choose SuperSilk - 2 in 1 STRAIGHTENER DRYER ?",
+            "content": "<p><strong>1. Minimal Heat Damage:</strong><br/><br/>Forget the risks of overheating! <em>SuperSilk, </em>hair dryer and straightener is designed to protect your hair with precision-engineered airflow and no hot plates, ensuring your locks remain healthy and shiny.</p><p><strong>2. Advanced BLDC Motor:</strong><br/><br/>The powerful high-speed motor, capable of up to 100,000 revolutions per minute, delivers unmatched efficiency by drying and styling your hair simultaneously for a flawless finish in record time.</p><p><strong>3. Smart Temperature Regulation:</strong><br/><br/>Equipped with cutting-edge glass bead thermistors located within the machine arms, <em>SuperSilk</em> monitors and regulates airflow temperature up to <strong>30 times per second</strong>. This ensures the hair dryer and straightener has even heat distribution, prevents extreme damage, and protects your hair’s natural moisture and shine.</p><p><strong>4. No Hot Plates, No Compromises:</strong><br/><br/>Unlike traditional tools, <em>SuperSilk</em> uses airflow technology instead of hot plates, offering a safer and more effective alternative that’s gentle on your hair while achieving professional results.</p><p><strong>5. Faster, Healthier Styling:</strong><br/><br/>Incorporating the latest technology, <em>SuperSilk</em> makes morning routines effortless by drying and straightening your hair in one step—saving you time and preserving your hair’s natural beauty.</p>",
+            "page": "",
+            "open_on_mobile": true
+          }
+        }
+      },
+      "block_order": [
+        "tab_FJ8QcQ"
+      ],
+      "name": "t:sections.tabs.presets.tab.name",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "separate_section_with_border": true,
+        "subheading": "",
+        "title": "",
+        "text_alignment": "center"
+      }
+    },
+    "gp_global_section_551647137515963265_ghDNUk": {
+      "type": "gp-global-section-551647137515963265",
+      "disabled": true,
+      "settings": {
+        "section_preload": "off_lazy_script",
+        "checksum": ""
+      }
+    },
+    "ss_feature_21_dMqBXC": {
+      "type": "ss-feature-21",
+      "blocks": {
+        "tab_6YHABV": {
+          "type": "tab",
+          "settings": {
+            "title": "First Tab",
+            "button": "Learn more",
+            "button_url": ""
+          }
+        },
+        "feature_dCNMVQ": {
+          "type": "feature",
+          "settings": {
+            "icon": "atc",
+            "heading": "Feature heading",
+            "text": "Feature text"
+          }
+        },
+        "feature_HM4GnA": {
+          "type": "feature",
+          "settings": {
+            "icon": "atc",
+            "heading": "Feature heading",
+            "text": "Feature text"
+          }
+        },
+        "feature_iXaBAy": {
+          "type": "feature",
+          "settings": {
+            "icon": "atc",
+            "heading": "Feature heading",
+            "text": "Feature text"
+          }
+        },
+        "feature_6hHPQr": {
+          "type": "feature",
+          "settings": {
+            "icon": "atc",
+            "heading": "Feature heading",
+            "text": "Feature text"
+          }
+        },
+        "tab_cJeR9e": {
+          "type": "tab",
+          "settings": {
+            "title": "Second Tab",
+            "button": "Learn more",
+            "button_url": ""
+          }
+        },
+        "feature_gztYw6": {
+          "type": "feature",
+          "settings": {
+            "icon": "atc",
+            "heading": "Feature heading",
+            "text": "Feature text"
+          }
+        },
+        "feature_eQKzdq": {
+          "type": "feature",
+          "settings": {
+            "icon": "atc",
+            "heading": "Feature heading",
+            "text": "Feature text"
+          }
+        },
+        "feature_QYiBJd": {
+          "type": "feature",
+          "settings": {
+            "icon": "atc",
+            "heading": "Feature heading",
+            "text": "Feature text"
+          }
+        },
+        "feature_yDjK6G": {
+          "type": "feature",
+          "settings": {
+            "icon": "atc",
+            "heading": "Feature heading",
+            "text": "Feature text"
+          }
+        },
+        "tab_6WjqDB": {
+          "type": "tab",
+          "settings": {
+            "title": "Third Tab",
+            "button": "Learn more",
+            "button_url": ""
+          }
+        },
+        "feature_NPk4pU": {
+          "type": "feature",
+          "settings": {
+            "icon": "atc",
+            "heading": "Feature heading",
+            "text": "Feature text"
+          }
+        },
+        "feature_cWnaKA": {
+          "type": "feature",
+          "settings": {
+            "icon": "atc",
+            "heading": "Feature heading",
+            "text": "Feature text"
+          }
+        },
+        "feature_fQcWAQ": {
+          "type": "feature",
+          "settings": {
+            "icon": "atc",
+            "heading": "Feature heading",
+            "text": "Feature text"
+          }
+        },
+        "feature_R4qAp8": {
+          "type": "feature",
+          "settings": {
+            "icon": "atc",
+            "heading": "Feature heading",
+            "text": "Feature text"
+          }
+        }
+      },
+      "block_order": [
+        "tab_6YHABV",
+        "feature_dCNMVQ",
+        "feature_HM4GnA",
+        "feature_iXaBAy",
+        "feature_6hHPQr",
+        "tab_cJeR9e",
+        "feature_gztYw6",
+        "feature_eQKzdq",
+        "feature_QYiBJd",
+        "feature_yDjK6G",
+        "tab_6WjqDB",
+        "feature_NPk4pU",
+        "feature_cWnaKA",
+        "feature_fQcWAQ",
+        "feature_R4qAp8"
+      ],
+      "disabled": true,
+      "settings": {
+        "body_gap": 50,
+        "body_gap_mobile": 0,
+        "content_padding_vertical": 78,
+        "content_padding_vertical_mobile": 24,
+        "tabs_gap": 60,
+        "tabs_gap_mobile": 30,
+        "tabs_border_thickness": 1,
+        "tab_custom": false,
+        "tab_font": "josefin_sans_n4",
+        "tab_size": 20,
+        "tab_size_mobile": 14,
+        "tab_height": 130,
+        "items_row": 2,
+        "items_row_mobile": 2,
+        "items_gap": 40,
+        "items_gap_mobile": 20,
+        "items_mt": 80,
+        "items_mt_mobile": 24,
+        "item_gap": 20,
+        "item_gap_mobile": 10,
+        "icon_size": 40,
+        "icon_size_mobile": 30,
+        "item_heading_custom": false,
+        "item_heading_font": "josefin_sans_n4",
+        "item_heading_size": 20,
+        "item_heading_size_mobile": 16,
+        "item_heading_height": 130,
+        "item_text_custom": false,
+        "item_text_font": "josefin_sans_n4",
+        "item_text_size": 15,
+        "item_text_size_mobile": 13,
+        "item_text_height": 150,
+        "item_text_mt": 12,
+        "item_text_mt_mobile": 12,
+        "button_custom": false,
+        "button_font": "josefin_sans_n4",
+        "button_size": 14,
+        "button_size_mobile": 14,
+        "button_height": 100,
+        "button_padding_vertical": 12,
+        "button_padding_vertical_mobile": 12,
+        "button_padding_horizontal": 16,
+        "button_padding_horizontal_mobile": 16,
+        "button_radius": 6,
+        "button_border_thickness": 0,
+        "button_style": "non_outline",
+        "tab_color": "#000000",
+        "tabs_border_color": "#000000",
+        "icon_color": "#000000",
+        "item_heading_color": "#000000",
+        "item_text_color": "#000000",
+        "button_color": "#ffffff",
+        "button_hover_color": "#ffffff",
+        "button_bg_color": "#000000",
+        "button_bg_hover_color": "#333333",
+        "button_border_color": "#555555",
+        "button_border_hover_color": "#555555",
+        "background_color": "#ffffff",
+        "border_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_horizontal": 0,
+        "margin_horizontal_mobile": 0,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_horizontal": 5,
+        "padding_horizontal_mobile": 1.5,
+        "full_width": true,
+        "content_width": 1200,
+        "border_thickness": 0,
+        "section_radius": 0,
+        "lazy": true
+      }
+    },
+    "d59b07d0-da48-4f91-91be-bec49b85f0cd": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "image_size": "auto",
+        "image": "{{ product.metafields.custom.tab3_content.value }}",
+        "mobile_image": "{{ product.metafields.custom.logo_mobile.value }}",
+        "allow_transparent_header": false,
+        "reveal_on_scroll": true,
+        "remove_vertical_spacing": true,
+        "content_width": "xs",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "1704692572b88c2d27": {
+      "type": "apps",
+      "blocks": {
+        "bogos_io_free_gift_bundle_view_WDbfX3": {
+          "type": "shopify://apps/bogos-io-free-gift/blocks/bundle-view/0432bba6-720a-4e95-be5a-b868386f7aa6",
+          "disabled": true,
+          "settings": {}
+        },
+        "93fc3454-327a-45d6-a25a-45f76f32fff6": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "instafeed_app_block_489P68": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "bogos_io_free_gift_bundle_view_WDbfX3",
+        "93fc3454-327a-45d6-a25a-45f76f32fff6",
+        "instafeed_app_block_489P68"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "separate_section_with_border": false,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false
+      }
+    },
+    "featured_collections_L9Bxin": {
+      "type": "featured-collections",
+      "blocks": {
+        "collection_mnLztC": {
+          "type": "collection",
+          "settings": {
+            "collection": "goddess-prebiotic-hair-product",
+            "products_count": 8,
+            "title": "",
+            "link_url": "",
+            "link_text": "View all"
+          }
+        }
+      },
+      "block_order": [
+        "collection_mnLztC"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "hide_product_information": false,
+        "stack_products": true,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 2,
+        "horizontal_spacing_factor": 1,
+        "vertical_spacing_factor": 1,
+        "subheading": ""
+      }
+    },
+    "17259061915e793d59": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_qLggN6": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_qLggN6"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false
+      }
+    },
+    "f1a638b4-de3e-4b38-ae48-3220aa04f8d2": {
+      "type": "related-products",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "separate_section_with_border": true,
+        "hide_product_information": false,
+        "stack_products": false,
+        "recommendations_count": 10,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "horizontal_spacing_factor": 1,
+        "vertical_spacing_factor": 1,
+        "subheading": "",
+        "title": "You may Also Like",
+        "content": ""
+      }
+    },
+    "e520717a-9f9f-41dd-9fbc-f43cc6cb52a4": {
+      "type": "blog-posts",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "separate_section_with_border": true,
+        "blog": "recipes",
+        "posts_count": 6,
+        "stack_on_mobile": false,
+        "show_category": false,
+        "show_excerpt": true,
+        "show_read_more": true,
+        "subheading": "",
+        "title": "<a href=\"https://thetahinigoddess.com/blogs/recipes\" title=\"Recipes\"><strong>FIND INSPIRATION IN SALLY'S LATEST DELICIOUS RECIPES.</strong></a>",
+        "content": "",
+        "button_link": "",
+        "button_text": "View all"
+      }
+    }
+  },
+  "order": [
+    "scrolling_content_ETfj88",
+    "main",
+    "image_with_text_h9pApC",
+    "image_with_text_T4JmrE",
+    "tabs_piMhqX",
+    "gp_global_section_551647137515963265_ghDNUk",
+    "ss_feature_21_dMqBXC",
+    "d59b07d0-da48-4f91-91be-bec49b85f0cd",
+    "1704692572b88c2d27",
+    "featured_collections_L9Bxin",
+    "17259061915e793d59",
+    "f1a638b4-de3e-4b38-ae48-3220aa04f8d2",
+    "e520717a-9f9f-41dd-9fbc-f43cc6cb52a4"
+  ]
+}

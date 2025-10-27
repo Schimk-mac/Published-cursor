@@ -1,0 +1,95 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-blog",
+      "settings": {
+        "show_blog_title": true,
+        "show_rss_feed": false,
+        "show_tags": false,
+        "posts_per_page": 47,
+        "feature_first_blog_post": false,
+        "show_category": true,
+        "show_excerpt": true,
+        "show_read_more": true
+      }
+    },
+    "67a9fd45-d26b-4227-a9e0-38e35d81d132": {
+      "type": "scrolling-content",
+      "blocks": {
+        "template--16842931372249__67a9fd45-d26b-4227-a9e0-38e35d81d132-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>Get a 25% discount on all items with the code BLUE LAST DAY!!!</strong>"
+          }
+        },
+        "aaa24126-c41c-4610-bc33-fe940d1784ab": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>ORDER OVER $200 GET 30% OFF NO CODE NEEDED LAST DAY!</strong>"
+          }
+        }
+      },
+      "block_order": [
+        "template--16842931372249__67a9fd45-d26b-4227-a9e0-38e35d81d132-text-1",
+        "aaa24126-c41c-4610-bc33-fe940d1784ab"
+      ],
+      "disabled": true,
+      "settings": {
+        "separate_section_with_border": true,
+        "scrolling_speed": 0.2,
+        "scroll_direction": "left",
+        "text_font": "heading",
+        "text_font_size_mobile": 28,
+        "text_font_size_desktop": 54,
+        "section_vertical_spacing_mobile": 28,
+        "section_vertical_spacing_desktop": 34,
+        "item_horizontal_spacing_mobile": 80,
+        "item_horizontal_spacing_desktop": 120,
+        "background": "#ffffff",
+        "text_color": "#62554a"
+      }
+    },
+    "ffb73ed6-7d69-4ff0-b23e-4cab941b619a": {
+      "type": "featured-collections",
+      "blocks": {
+        "template--16675892134105__ffb73ed6-7d69-4ff0-b23e-4cab941b619a-168638332719f8db75-0": {
+          "type": "collection",
+          "settings": {
+            "collection": "our-best-sellers",
+            "products_count": 8,
+            "title": "",
+            "link_url": "",
+            "link_text": "View all"
+          }
+        }
+      },
+      "block_order": [
+        "template--16675892134105__ffb73ed6-7d69-4ff0-b23e-4cab941b619a-168638332719f8db75-0"
+      ],
+      "settings": {
+        "separate_section_with_border": false,
+        "hide_product_information": false,
+        "stack_products": false,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "horizontal_spacing_factor": 1,
+        "vertical_spacing_factor": 1,
+        "subheading": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "67a9fd45-d26b-4227-a9e0-38e35d81d132",
+    "ffb73ed6-7d69-4ff0-b23e-4cab941b619a"
+  ]
+}

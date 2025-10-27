@@ -1,0 +1,47 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "header-group.json",
+  "context": {
+    "market": "ca"
+  },
+  "sections": {
+    "announcement-bar": {
+      "settings": {},
+      "blocks": {
+        "message_pnjhK9": {
+          "disabled": false,
+          "settings": {
+            "text": "<strong>Enjoy free  shipping to Canada with purchase over  CA$200</strong>"
+          }
+        },
+        "17c5f7d7-04ad-43c9-9f1e-6e8794ecb098": {
+          "disabled": true,
+          "settings": {}
+        },
+        "message-1": {
+          "disabled": true,
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "message_pnjhK9",
+        "17c5f7d7-04ad-43c9-9f1e-6e8794ecb098",
+        "7b397f5d-1040-4bb6-824b-2e9406d33b60",
+        "b0a44384-9a4a-49cc-8862-5e724150501a",
+        "message-1"
+      ]
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

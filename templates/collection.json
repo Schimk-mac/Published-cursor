@@ -1,0 +1,315 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "705e694a-7844-4d0e-8201-8f83e2b5f926": {
+      "type": "slideshow",
+      "blocks": {
+        "c08e8a66-ab3d-49ad-8023-fff740533c9c": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "{{ collection.metafields.custom.collection_image_desktop.value }}",
+            "mobile_image": "{{ collection.metafields.custom.collection_image_mobile.value }}",
+            "subheading": "",
+            "title": "",
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "content_max_width": 1200,
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_1_style": "solid",
+            "button_1_background": "#ffffff",
+            "button_1_text_color": "#000000",
+            "button_2_text": "",
+            "button_2_link": "",
+            "button_2_style": "outline",
+            "button_2_background": "#ffffff",
+            "button_2_text_color": "#000000",
+            "background": "",
+            "background_opacity": 50,
+            "text_color": "#ffffff",
+            "border_color": "",
+            "gradient_overlay": "linear-gradient(180deg, rgba(NaN, NaN, NaN, 0), rgba(4, 4, 4, 0.65) 100%)"
+          }
+        },
+        "template--16666088440025__705e694a-7844-4d0e-8201-8f83e2b5f926-1685200217a2f002bc-1": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/1_83451892-c8a3-4cf7-bc99-79b113c33321.png",
+            "mobile_image": "shopify://shop_images/1_b6cf4ebf-cb6a-4bf2-9662-1115e1428d9e.png",
+            "subheading": "",
+            "title": "",
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "content_max_width": 1200,
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_1_style": "solid",
+            "button_1_background": "#ffffff",
+            "button_1_text_color": "#000000",
+            "button_2_text": "",
+            "button_2_link": "",
+            "button_2_style": "outline",
+            "button_2_background": "#ffffff",
+            "button_2_text_color": "#000000",
+            "background": "rgba(0,0,0,0)",
+            "background_opacity": 100,
+            "text_color": "#ffffff",
+            "border_color": "",
+            "gradient_overlay": "linear-gradient(180deg, rgba(238, 230, 218, 1), rgba(NaN, NaN, NaN, 0) 100%)"
+          }
+        },
+        "09ed16a6-ec72-4802-99c6-fce438bb97e0": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Prestige_2023_3200_x_1200_px_2_ea2fa8de-06b6-4c1c-b461-de7d1e2136fb.jpg",
+            "mobile_image": "shopify://shop_images/Prestige_2023_1200_x_1600px_54b130df-8d7f-47cd-aa41-0c8376f252e1.jpg",
+            "subheading": "",
+            "title": "",
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "content_max_width": 780,
+            "button_1_text": "",
+            "button_1_link": "shopify://collections/halva",
+            "button_1_style": "solid",
+            "button_1_background": "#ffffff",
+            "button_1_text_color": "#000000",
+            "button_2_text": "",
+            "button_2_link": "shopify://collections/halva",
+            "button_2_style": "outline",
+            "button_2_background": "#ffffff",
+            "button_2_text_color": "#000000",
+            "background": "",
+            "background_opacity": 0,
+            "text_color": "#ffffff",
+            "border_color": "",
+            "gradient_overlay": ""
+          }
+        }
+      },
+      "block_order": [
+        "c08e8a66-ab3d-49ad-8023-fff740533c9c",
+        "template--16666088440025__705e694a-7844-4d0e-8201-8f83e2b5f926-1685200217a2f002bc-1",
+        "09ed16a6-ec72-4802-99c6-fce438bb97e0"
+      ],
+      "settings": {
+        "allow_transparent_header": true,
+        "show_next_section_button": false,
+        "media_size": "auto",
+        "show_initial_transition": false,
+        "autoplay": true,
+        "autoplay_pause_on_video": true,
+        "cycle_speed": 4,
+        "background": "#eee6da",
+        "controls_color": "#ffffff"
+      }
+    },
+    "9a457217-ebf0-4eba-813c-acfd649136f6": {
+      "type": "scrolling-content",
+      "blocks": {
+        "template--16842931503321__9a457217-ebf0-4eba-813c-acfd649136f6-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>Get a 25% discount on all items with the code BLUE LAST DAY!!!</strong>"
+          }
+        },
+        "8a8bcdee-47de-4b97-9c29-1f1a30c140ea": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>ORDER OVER $200 GET 30% OFF NO CODE NEEDED LAST DAY!</strong>"
+          }
+        }
+      },
+      "block_order": [
+        "template--16842931503321__9a457217-ebf0-4eba-813c-acfd649136f6-text-1",
+        "8a8bcdee-47de-4b97-9c29-1f1a30c140ea"
+      ],
+      "disabled": true,
+      "settings": {
+        "separate_section_with_border": true,
+        "scrolling_speed": 0.2,
+        "scroll_direction": "left",
+        "pause_on_hover": false,
+        "text_font": "heading",
+        "text_font_size_mobile": 22,
+        "text_font_size_desktop": 68,
+        "section_vertical_spacing_mobile": 24,
+        "section_vertical_spacing_desktop": 80,
+        "item_horizontal_spacing_mobile": 80,
+        "item_horizontal_spacing_desktop": 120,
+        "background": "#ffffff",
+        "text_color": "#62554a"
+      }
+    },
+    "collection-banner": {
+      "type": "collection-banner",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "scheme-3",
+        "image": "{{ collection.metafields.custom.collection_image_desktop.value }}",
+        "mobile_image": "{{ collection.metafields.custom.collection_image_mobile.value }}",
+        "image_size": "auto",
+        "allow_transparent_header": true,
+        "show_image": true,
+        "reveal": false,
+        "enable_parallax": false,
+        "show_collection_title": false,
+        "show_collection_description": false,
+        "show_breadcrumb": false,
+        "content_width": "xs",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "scrolling_content_QyP9cb": {
+      "type": "scrolling-content",
+      "blocks": {
+        "text_x9dWpd": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>Limited-time offer: Save 20% during our Rosh Hashanah Sale with code 'sweet'</strong>"
+          }
+        }
+      },
+      "block_order": [
+        "text_x9dWpd"
+      ],
+      "disabled": true,
+      "settings": {
+        "separate_section_with_border": true,
+        "scrolling_speed": 0.4,
+        "scroll_direction": "left",
+        "pause_on_hover": true,
+        "text_font": "heading",
+        "text_font_size_mobile": 30,
+        "text_font_size_desktop": 66,
+        "section_vertical_spacing_mobile": 26,
+        "section_vertical_spacing_desktop": 22,
+        "item_horizontal_spacing_mobile": 15,
+        "item_horizontal_spacing_desktop": 10,
+        "background": "#eee6da",
+        "text_color": ""
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "hide_product_information": false,
+        "products_per_page": 48,
+        "products_per_row_mobile": "2",
+        "products_size_desktop": "medium",
+        "show_grid_mode_selector": true,
+        "horizontal_spacing_factor": 0.7,
+        "vertical_spacing_factor": 0.7,
+        "filter_layout": "drawer",
+        "quick_links_menu": "",
+        "show_sort_by": false,
+        "show_filters": false,
+        "show_results_count": false,
+        "show_filter_group_name": false,
+        "show_filter_values_count": false,
+        "open_filters_by_default": false
+      }
+    },
+    "1686306487914f058f": {
+      "type": "apps",
+      "blocks": {
+        "65eedd5c-a073-4b0c-84f4-8e9bdf634146": {
+          "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "maxwidth": 2100
+          }
+        },
+        "instafeed_app_block_APLaNV": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "alignment": "center",
+            "background_color": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "65eedd5c-a073-4b0c-84f4-8e9bdf634146",
+        "instafeed_app_block_APLaNV"
+      ],
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "separate_section_with_border": true,
+        "remove_vertical_spacing": true,
+        "remove_horizontal_spacing": true
+      }
+    },
+    "recently-viewed-products": {
+      "type": "recently-viewed-products",
+      "settings": {
+        "separate_section_with_border": true,
+        "color_scheme": "scheme-3",
+        "hide_product_information": false,
+        "stack_products": false,
+        "products_count": 9,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "horizontal_spacing_factor": 1,
+        "vertical_spacing_factor": 1,
+        "subheading": "",
+        "title": "Recently viewed products",
+        "content": ""
+      }
+    },
+    "featured_collections_tCamiF": {
+      "type": "featured-collections",
+      "blocks": {
+        "collection_edigrB": {
+          "type": "collection",
+          "settings": {
+            "collection": "holiday-gift-set",
+            "products_count": 8,
+            "title": "",
+            "link_url": "",
+            "link_text": "View all"
+          }
+        }
+      },
+      "block_order": [
+        "collection_edigrB"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "hide_product_information": true,
+        "stack_products": true,
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 2,
+        "horizontal_spacing_factor": 1,
+        "vertical_spacing_factor": 1,
+        "subheading": ""
+      }
+    }
+  },
+  "order": [
+    "705e694a-7844-4d0e-8201-8f83e2b5f926",
+    "9a457217-ebf0-4eba-813c-acfd649136f6",
+    "collection-banner",
+    "scrolling_content_QyP9cb",
+    "main",
+    "1686306487914f058f",
+    "recently-viewed-products",
+    "featured_collections_tCamiF"
+  ]
+}

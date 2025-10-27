@@ -1,0 +1,39 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "question-1": {
+          "type": "question",
+          "repeater": "{{ page.metafields.custom.faq_page.value }}",
+          "settings": {
+            "question": "{{ block.repeater.title.value }}",
+            "answer": "<p>{{ block.repeater.answer | metafield_tag }}</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question-1"
+      ],
+      "settings": {
+        "separate_section_with_border": true,
+        "show_categories": true,
+        "subheading": "Need help?",
+        "title": "Frequently Asked Questions",
+        "content": ""
+      }
+    }
+  },
+  "order": [
+    "faq"
+  ]
+}

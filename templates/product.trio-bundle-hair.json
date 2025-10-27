@@ -1,0 +1,626 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "a0f6af01-3e75-4a82-8043-40e14c466476": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "b16e2134-e125-4a5a-b6f2-4669975512d8": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "7f22475e-0d87-46ac-a6e1-5d7d69c0e675": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "5d92abc3-5ee5-4044-8b82-1411dd185d50": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": true,
+            "selector_style": "block",
+            "swatch_selector_style": "block_swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "6914e2d5-f8c1-4362-a1c7-5fe8ab17c193": {
+          "type": "product_variations",
+          "settings": {
+            "option_name": "",
+            "option_value_metafield": "{{ product.metafields.custom.variation_value.value }}",
+            "products": "{{ product.metafields.custom.add_definition.value }}",
+            "selector_style": "variant_image"
+          }
+        },
+        "72a549f0-d6bd-48b2-9807-d8a7c21efd71": {
+          "type": "payment_terms",
+          "settings": {}
+        },
+        "buy_buttons_NHpBUE": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "description_zNwUUG": {
+          "type": "description",
+          "settings": {
+            "collapse_content": false,
+            "show_below_gallery": false
+          }
+        },
+        "image_BetRTm": {
+          "type": "image",
+          "settings": {
+            "image": "{{ product.metafields.custom.icons_symbols_image.value }}",
+            "alignment": "start",
+            "width_mode": "custom",
+            "max_width": 600,
+            "mobile_max_width": 600
+          }
+        }
+      },
+      "block_order": [
+        "a0f6af01-3e75-4a82-8043-40e14c466476",
+        "b16e2134-e125-4a5a-b6f2-4669975512d8",
+        "7f22475e-0d87-46ac-a6e1-5d7d69c0e675",
+        "5d92abc3-5ee5-4044-8b82-1411dd185d50",
+        "6914e2d5-f8c1-4362-a1c7-5fe8ab17c193",
+        "72a549f0-d6bd-48b2-9807-d8a7c21efd71",
+        "buy_buttons_NHpBUE",
+        "description_zNwUUG",
+        "image_BetRTm"
+      ],
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "container_size": "full",
+        "product_info_size": 50,
+        "show_sticky_add_to_cart": true,
+        "center_basic_info": false,
+        "desktop_media_layout": "grid_2x_highlighted",
+        "desktop_media_grid_gap": 0,
+        "mobile_controls": "thumbnails",
+        "enable_media_autoplay": true,
+        "enable_video_looping": true,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3
+      }
+    },
+    "ss_feature_21_dMqBXC": {
+      "type": "ss-feature-21",
+      "blocks": {
+        "tab_6WjqDB": {
+          "type": "tab",
+          "disabled": true,
+          "settings": {
+            "title": "Prebiotic Leave-In Conditioner",
+            "image": "shopify://shop_images/caesar_back_3_2.png",
+            "button": "",
+            "button_url": ""
+          }
+        },
+        "feature_R4qAp8": {
+          "type": "feature",
+          "disabled": true,
+          "settings": {
+            "icon": "atc",
+            "heading": "Our Leave-In Conditioner is the perfect finishing touch to your hair care routine. Apply on damp or dry hair to detangle knots, smooth frizz, and protect hair fibers. It’s lightweight, non-greasy, and provides lasting softness.",
+            "text": ""
+          }
+        },
+        "tab_6YHABV": {
+          "type": "tab",
+          "settings": {
+            "title": "Prebiotic Shampoo",
+            "image": "shopify://shop_images/shampoo1.png",
+            "button": "",
+            "button_url": ""
+          }
+        },
+        "feature_dCNMVQ": {
+          "type": "feature",
+          "settings": {
+            "icon": "atc",
+            "heading": "This prebiotic shampoo with blue agave inulin promotes hair growth, strengthens from root to tip, and balances your scalp’s microbiome. Whether at home or on-the-go, it's perfect for healthier, fuller hair. Convenient for travel, gym, or hair appointments, and comes in a handy bag.",
+            "text": ""
+          }
+        },
+        "tab_cJeR9e": {
+          "type": "tab",
+          "settings": {
+            "title": "Prebiotic Conditioning Mask",
+            "image": "shopify://shop_images/mask.png",
+            "button": "",
+            "button_url": ""
+          }
+        },
+        "feature_yDjK6G": {
+          "type": "feature",
+          "settings": {
+            "icon": "atc",
+            "heading": "Repair and nourish your hair fibers with this inulin-powered mask, ideal for damaged or color-treated hair. It restores softness and fights split ends, making it perfect for home use or to take with you on vacation or to the gym. Comes with a bag for easy transport",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "tab_6WjqDB",
+        "feature_R4qAp8",
+        "tab_6YHABV",
+        "feature_dCNMVQ",
+        "tab_cJeR9e",
+        "feature_yDjK6G"
+      ],
+      "disabled": true,
+      "settings": {
+        "body_gap": 0,
+        "body_gap_mobile": 0,
+        "content_padding_vertical": 6,
+        "content_padding_vertical_mobile": 8,
+        "tabs_gap": 54,
+        "tabs_gap_mobile": 20,
+        "tabs_border_thickness": 2,
+        "tab_custom": false,
+        "tab_font": "poppins_n7",
+        "tab_size": 20,
+        "tab_size_mobile": 14,
+        "tab_height": 130,
+        "items_row": 2,
+        "items_row_mobile": 1,
+        "items_gap": 0,
+        "items_gap_mobile": 26,
+        "items_mt": 22,
+        "items_mt_mobile": 20,
+        "item_gap": 30,
+        "item_gap_mobile": 10,
+        "icon_size": 0,
+        "icon_size_mobile": 0,
+        "item_heading_custom": false,
+        "item_heading_font": "poppins_n5",
+        "item_heading_size": 24,
+        "item_heading_size_mobile": 18,
+        "item_heading_height": 120,
+        "item_text_custom": false,
+        "item_text_font": "poppins_n4",
+        "item_text_size": 22,
+        "item_text_size_mobile": 16,
+        "item_text_height": 130,
+        "item_text_mt": 14,
+        "item_text_mt_mobile": 12,
+        "button_custom": false,
+        "button_font": "poppins_n4",
+        "button_size": 20,
+        "button_size_mobile": 26,
+        "button_height": 150,
+        "button_padding_vertical": 6,
+        "button_padding_vertical_mobile": 4,
+        "button_padding_horizontal": 18,
+        "button_padding_horizontal_mobile": 6,
+        "button_radius": 78,
+        "button_border_thickness": 1,
+        "button_style": "outline_arrow",
+        "tab_color": "#544336",
+        "tabs_border_color": "{{ product.metafields.custom[\"2nd_\"].value }}",
+        "icon_color": "#000000",
+        "item_heading_color": "#62554a",
+        "item_text_color": "#62554a",
+        "button_color": "{{ product.metafields.custom.add_to_cart_text_color.value }}",
+        "button_hover_color": "{{ product.metafields.custom[\"2nd_\"].value }}",
+        "button_bg_color": "{{ product.metafields.custom[\"2nd_\"].value }}",
+        "button_bg_hover_color": "{{ product.metafields.custom.add_to_cart_text_color.value }}",
+        "button_border_color": "{{ product.metafields.custom.add_to_cart_text_color.value }}",
+        "button_border_hover_color": "{{ product.metafields.custom[\"2nd_\"].value }}",
+        "background_color": "#ffffff",
+        "border_color": "#ffffff",
+        "margin_top": 0,
+        "margin_bottom": 4,
+        "margin_horizontal": 0,
+        "margin_horizontal_mobile": 0,
+        "padding_top": 0,
+        "padding_bottom": 12,
+        "padding_horizontal": 1,
+        "padding_horizontal_mobile": 0.5,
+        "full_width": true,
+        "content_width": 1200,
+        "border_thickness": 0,
+        "section_radius": 0,
+        "lazy": true
+      }
+    },
+    "ss_feature_21_nBKJkq": {
+      "type": "ss-feature-21",
+      "blocks": {
+        "tab_6BXyyX": {
+          "type": "tab",
+          "settings": {
+            "title": "Prebiotic Leave-In Conditioner",
+            "image": "shopify://shop_images/caesar_back_3_2.png",
+            "button": "",
+            "button_url": ""
+          }
+        },
+        "feature_XwB7xT": {
+          "type": "feature",
+          "settings": {
+            "icon": "atc",
+            "heading": "Our Leave-In Conditioner is the perfect finishing touch to your hair care routine. Apply on damp or dry hair to detangle knots, smooth frizz, and protect hair fibers. It’s lightweight, non-greasy, and provides lasting softness.",
+            "text": ""
+          }
+        },
+        "tab_9mthyp": {
+          "type": "tab",
+          "settings": {
+            "title": "Prebiotic Shampoo",
+            "image": "shopify://shop_images/shampoo1.png",
+            "button": "",
+            "button_url": ""
+          }
+        },
+        "feature_aYCVRR": {
+          "type": "feature",
+          "settings": {
+            "icon": "atc",
+            "heading": "This prebiotic shampoo with blue agave inulin promotes hair growth, strengthens from root to tip, and balances your scalp’s microbiome. Whether at home or on-the-go, it's perfect for healthier, fuller hair. Convenient for travel, gym, or hair appointments, and comes in a handy bag.",
+            "text": ""
+          }
+        },
+        "tab_MEdnzM": {
+          "type": "tab",
+          "settings": {
+            "title": "Prebiotic Conditioning Mask",
+            "image": "shopify://shop_images/mask.png",
+            "button": "",
+            "button_url": ""
+          }
+        },
+        "feature_rXrKbj": {
+          "type": "feature",
+          "settings": {
+            "icon": "atc",
+            "heading": "Repair and nourish your hair fibers with this inulin-powered mask, ideal for damaged or color-treated hair. It restores softness and fights split ends, making it perfect for home use or to take with you on vacation or to the gym. Comes with a bag for easy transport",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "tab_6BXyyX",
+        "feature_XwB7xT",
+        "tab_9mthyp",
+        "feature_aYCVRR",
+        "tab_MEdnzM",
+        "feature_rXrKbj"
+      ],
+      "settings": {
+        "body_gap": 0,
+        "body_gap_mobile": 0,
+        "content_padding_vertical": 6,
+        "content_padding_vertical_mobile": 8,
+        "tabs_gap": 54,
+        "tabs_gap_mobile": 20,
+        "tabs_border_thickness": 2,
+        "tab_custom": false,
+        "tab_font": "poppins_n7",
+        "tab_size": 20,
+        "tab_size_mobile": 14,
+        "tab_height": 130,
+        "items_row": 2,
+        "items_row_mobile": 1,
+        "items_gap": 0,
+        "items_gap_mobile": 26,
+        "items_mt": 22,
+        "items_mt_mobile": 20,
+        "item_gap": 30,
+        "item_gap_mobile": 10,
+        "icon_size": 0,
+        "icon_size_mobile": 0,
+        "item_heading_custom": false,
+        "item_heading_font": "poppins_n5",
+        "item_heading_size": 24,
+        "item_heading_size_mobile": 18,
+        "item_heading_height": 120,
+        "item_text_custom": false,
+        "item_text_font": "poppins_n4",
+        "item_text_size": 22,
+        "item_text_size_mobile": 16,
+        "item_text_height": 130,
+        "item_text_mt": 14,
+        "item_text_mt_mobile": 12,
+        "button_custom": false,
+        "button_font": "poppins_n4",
+        "button_size": 20,
+        "button_size_mobile": 26,
+        "button_height": 150,
+        "button_padding_vertical": 6,
+        "button_padding_vertical_mobile": 4,
+        "button_padding_horizontal": 18,
+        "button_padding_horizontal_mobile": 6,
+        "button_radius": 78,
+        "button_border_thickness": 1,
+        "button_style": "outline_arrow",
+        "tab_color": "#544336",
+        "tabs_border_color": "{{ product.metafields.custom[\"2nd_\"].value }}",
+        "icon_color": "#000000",
+        "item_heading_color": "#62554a",
+        "item_text_color": "#62554a",
+        "button_color": "{{ product.metafields.custom.add_to_cart_text_color.value }}",
+        "button_hover_color": "{{ product.metafields.custom[\"2nd_\"].value }}",
+        "button_bg_color": "{{ product.metafields.custom[\"2nd_\"].value }}",
+        "button_bg_hover_color": "{{ product.metafields.custom.add_to_cart_text_color.value }}",
+        "button_border_color": "{{ product.metafields.custom.add_to_cart_text_color.value }}",
+        "button_border_hover_color": "{{ product.metafields.custom[\"2nd_\"].value }}",
+        "background_color": "#ffffff",
+        "border_color": "#ffffff",
+        "margin_top": 0,
+        "margin_bottom": 4,
+        "margin_horizontal": 0,
+        "margin_horizontal_mobile": 0,
+        "padding_top": 0,
+        "padding_bottom": 12,
+        "padding_horizontal": 1,
+        "padding_horizontal_mobile": 0.5,
+        "full_width": true,
+        "content_width": 1200,
+        "border_thickness": 0,
+        "section_radius": 0,
+        "lazy": true
+      }
+    },
+    "faq_dVHtXR": {
+      "type": "faq",
+      "blocks": {
+        "question_FCPfG3": {
+          "type": "question",
+          "repeater": "{{ product.metafields.custom.qa_metaobject.value }}",
+          "settings": {
+            "question": "{{ block.repeater.title.value }}",
+            "answer": "<p>{{ block.repeater.answer | metafield_tag }}</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_FCPfG3"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "show_categories": false,
+        "subheading": "",
+        "title": "Questions About Our To-Go Set?",
+        "content": ""
+      }
+    },
+    "featured_product_WKqqik": {
+      "type": "featured-product",
+      "blocks": {
+        "buy_buttons_76DeGV": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "{{ section.settings.product.metafields.custom[\"2nd_\"].value }}",
+            "atc_button_text_color": "{{ section.settings.product.metafields.custom.add_to_cart_text_color.value }}",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "buy_buttons_76DeGV"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "product": "prebiotic-hair-to-go-set",
+        "separate_section_with_border": false,
+        "container_size": "full",
+        "product_info_size": 30,
+        "center_basic_info": true,
+        "desktop_media_layout": "carousel_dots",
+        "desktop_media_grid_gap": 0,
+        "mobile_controls": "dots",
+        "enable_media_autoplay": false,
+        "enable_video_looping": false,
+        "enable_image_zoom": false,
+        "max_image_zoom_level": 1,
+        "subheading": "",
+        "title": "",
+        "content": ""
+      }
+    },
+    "scrolling_content_6Rwyxr": {
+      "type": "scrolling-content",
+      "blocks": {
+        "text_3nKKPf": {
+          "type": "text",
+          "settings": {
+            "text": "Get the Complete Hair Care Bundle & Save 20%!"
+          }
+        }
+      },
+      "block_order": [
+        "text_3nKKPf"
+      ],
+      "settings": {
+        "separate_section_with_border": false,
+        "scrolling_speed": 0.5,
+        "scroll_direction": "left",
+        "pause_on_hover": false,
+        "text_font": "heading",
+        "text_font_size_mobile": 40,
+        "text_font_size_desktop": 96,
+        "section_vertical_spacing_mobile": 30,
+        "section_vertical_spacing_desktop": 44,
+        "item_horizontal_spacing_mobile": 40,
+        "item_horizontal_spacing_desktop": 70,
+        "background": "rgba(0,0,0,0)",
+        "text_color": ""
+      }
+    },
+    "d59b07d0-da48-4f91-91be-bec49b85f0cd": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "image_size": "auto",
+        "image": "{{ product.metafields.custom.tab3_content.value }}",
+        "mobile_image": "{{ product.metafields.custom.logo_mobile.value }}",
+        "allow_transparent_header": false,
+        "reveal_on_scroll": true,
+        "remove_vertical_spacing": true,
+        "content_width": "xs",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "image_with_text_Kt38ky": {
+      "type": "image-with-text",
+      "blocks": {
+        "subheading_thmNF8": {
+          "type": "subheading",
+          "settings": {
+            "text": "Meet the Ultimate Hair Care TRIO"
+          }
+        },
+        "heading_GDfbcn": {
+          "type": "heading",
+          "settings": {
+            "text": "<em><strong>Get the Complete Hair Care Bundle & Save 20%!</strong></em>",
+            "heading_tag": "h4"
+          }
+        },
+        "richtext_UBxnHb": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Prebiotic Shampoo, Conditioning Mask, and Leave-In Conditioner – The complete routine for healthy, strong, and shiny hair!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_thmNF8",
+        "heading_GDfbcn",
+        "richtext_UBxnHb"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "image": "shopify://shop_images/Untitled_design_1_31797a63-8095-41c2-bc0f-0dcf74ebd67e.png",
+        "mobile_image": "shopify://shop_images/Untitled_1000_x_1000_px_1.png",
+        "reveal_on_scroll": true,
+        "image_position": "start",
+        "content_width": "sm",
+        "remove_vertical_spacing": true
+      }
+    },
+    "1704692572b88c2d27": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_4bcNwN": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "alignment": "center",
+            "background_color": "#f6f3f0",
+            "html_area": ""
+          }
+        },
+        "93fc3454-327a-45d6-a25a-45f76f32fff6": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_4bcNwN",
+        "93fc3454-327a-45d6-a25a-45f76f32fff6"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "separate_section_with_border": false,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false
+      }
+    },
+    "f1a638b4-de3e-4b38-ae48-3220aa04f8d2": {
+      "type": "related-products",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "separate_section_with_border": true,
+        "hide_product_information": false,
+        "stack_products": false,
+        "recommendations_count": 10,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "horizontal_spacing_factor": 1,
+        "vertical_spacing_factor": 1,
+        "subheading": "",
+        "title": "You may Also Like",
+        "content": ""
+      }
+    },
+    "e520717a-9f9f-41dd-9fbc-f43cc6cb52a4": {
+      "type": "blog-posts",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "separate_section_with_border": true,
+        "blog": "recipes",
+        "posts_count": 6,
+        "stack_on_mobile": false,
+        "show_category": false,
+        "show_excerpt": true,
+        "show_read_more": true,
+        "subheading": "",
+        "title": "<a href=\"https://thetahinigoddess.com/blogs/recipes\" title=\"Recipes\"><strong>FIND INSPIRATION IN SALLY'S LATEST DELICIOUS RECIPES.</strong></a>",
+        "content": "",
+        "button_link": "",
+        "button_text": "View all"
+      }
+    },
+    "custom_liquid_hfExXE": {
+      "type": "custom-liquid",
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "liquid": "<p>Write or copy/paste Liquid code</p>",
+        "text_alignment": "center"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "ss_feature_21_dMqBXC",
+    "ss_feature_21_nBKJkq",
+    "faq_dVHtXR",
+    "featured_product_WKqqik",
+    "scrolling_content_6Rwyxr",
+    "d59b07d0-da48-4f91-91be-bec49b85f0cd",
+    "image_with_text_Kt38ky",
+    "1704692572b88c2d27",
+    "f1a638b4-de3e-4b38-ae48-3220aa04f8d2",
+    "e520717a-9f9f-41dd-9fbc-f43cc6cb52a4",
+    "custom_liquid_hfExXE"
+  ]
+}

@@ -1,0 +1,60 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "show_title": true,
+        "page_width": "xs"
+      }
+    },
+    "a9708341-e403-44e7-bd39-9b3541292aa9": {
+      "type": "scrolling-content",
+      "blocks": {
+        "14edc373-7df1-4eba-8dad-2714d908e6b3": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>Get a 25% discount on all items with the code BLUE LAST DAY!!!</strong>"
+          }
+        },
+        "f89820bd-27c1-499f-abfe-6009ca4cf406": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>ORDER OVER $200 GET 30% OFF NO CODE NEEDED LAST DAY!</strong>"
+          }
+        }
+      },
+      "block_order": [
+        "14edc373-7df1-4eba-8dad-2714d908e6b3",
+        "f89820bd-27c1-499f-abfe-6009ca4cf406"
+      ],
+      "disabled": true,
+      "settings": {
+        "separate_section_with_border": true,
+        "scrolling_speed": 0.2,
+        "scroll_direction": "left",
+        "text_font": "heading",
+        "text_font_size_mobile": 24,
+        "text_font_size_desktop": 50,
+        "section_vertical_spacing_mobile": 30,
+        "section_vertical_spacing_desktop": 80,
+        "item_horizontal_spacing_mobile": 80,
+        "item_horizontal_spacing_desktop": 120,
+        "background": "#ffffff",
+        "text_color": "#62554a"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "a9708341-e403-44e7-bd39-9b3541292aa9"
+  ]
+}

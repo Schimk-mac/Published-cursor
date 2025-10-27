@@ -1,0 +1,74 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "6be3f2a0-f1be-434a-8cf0-0d576c67f539": {
+      "type": "custom-liquid",
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "liquid": "<div id=\"omnisend-embedded-v2-6407956db40d6530aba59d1a\"></div>",
+        "text_alignment": "center"
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "4790abf8-1cfb-434a-b36d-43a16f3a96e2": {
+          "type": "links",
+          "settings": {
+            "menu": "home-menu",
+            "show_menu_title": false,
+            "menu_title": ""
+          }
+        },
+        "footer-1": {
+          "type": "links",
+          "settings": {
+            "menu": "footer",
+            "show_menu_title": false,
+            "menu_title": ""
+          }
+        },
+        "footer-0": {
+          "type": "text",
+          "settings": {
+            "title": "",
+            "content": "",
+            "enable_follow_on_shop": true
+          }
+        }
+      },
+      "block_order": [
+        "4790abf8-1cfb-434a-b36d-43a16f3a96e2",
+        "footer-1",
+        "footer-0"
+      ],
+      "settings": {
+        "color_scheme": "scheme-4",
+        "separate_section_with_border": false,
+        "show_social_media": true,
+        "show_payment_icons": true,
+        "show_country_selector": true,
+        "show_country_name": false,
+        "show_country_flag": false,
+        "show_locale_selector": true
+      }
+    }
+  },
+  "order": [
+    "6be3f2a0-f1be-434a-8cf0-0d576c67f539",
+    "footer"
+  ]
+}

@@ -1,0 +1,102 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "17c5f7d7-04ad-43c9-9f1e-6e8794ecb098": {
+          "type": "message",
+          "disabled": true,
+          "settings": {
+            "text": "Labor Day: 25% off code 'labor25', limited time only-Sitewide"
+          }
+        },
+        "7b397f5d-1040-4bb6-824b-2e9406d33b60": {
+          "type": "message",
+          "disabled": true,
+          "settings": {
+            "text": "<a href=\"/products/bundle-save-20-free-usa-shipping\" title=\"Prebiotic Shampoo and Mask Bundle Save 20% + Free USA Shipping!\">Prebiotic Shampoo and Mask Bundle Save 20% + Free USA Shipping!</a>"
+          }
+        },
+        "b0a44384-9a4a-49cc-8862-5e724150501a": {
+          "type": "message",
+          "disabled": true,
+          "settings": {
+            "text": "20% off Prebiotic Shampoo and Mask and leave-in Bundle with Free USA Shipping -<a href=\"/products/prebiotic-shampoo-mask-and-leave-in-bundle-save-20-free-usa-shipping\" title=\"Prebiotic Shampoo, Mask and Leave-in Bundle Save 20% + Free USA Shipping!\"> click Here</a>"
+          }
+        },
+        "message-1": {
+          "type": "message",
+          "settings": {
+            "text": "<strong>Free shipping in the USA on all orders over $50</strong>"
+          }
+        },
+        "message_pnjhK9": {
+          "type": "message",
+          "settings": {
+            "text": "<strong>Enjoy free worldwide shipping with purchase over $250</strong>"
+          }
+        }
+      },
+      "block_order": [
+        "17c5f7d7-04ad-43c9-9f1e-6e8794ecb098",
+        "7b397f5d-1040-4bb6-824b-2e9406d33b60",
+        "b0a44384-9a4a-49cc-8862-5e724150501a",
+        "message-1",
+        "message_pnjhK9"
+      ],
+      "settings": {
+        "color_scheme": "scheme-4",
+        "enable_sticky": true,
+        "autoplay": true,
+        "cycle_speed": 4,
+        "mobile_font_size": 14
+      }
+    },
+    "header": {
+      "type": "header",
+      "custom_css": [
+        ".horizontal-product-card {background-color: white;}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "enable_sticky": true,
+        "hide_on_scroll": false,
+        "show_separation_border": false,
+        "reduce_padding": true,
+        "logo": "shopify://shop_images/Untitled_design_4_6a20ad09-ee5b-432f-af0b-220aff13a294.png",
+        "logo_max_width": 150,
+        "logo_mobile_max_width": 105,
+        "menu": "main-menu",
+        "sidebar_menu": "",
+        "menu_open_trigger": "hover",
+        "enable_search": true,
+        "sidebar_color_scheme": "",
+        "sidebar_text_font": "heading",
+        "sidebar_show_dividers": true,
+        "layout": "logo_left_navigation_center",
+        "show_icons": true,
+        "show_country_selector": true,
+        "show_country_name": false,
+        "show_country_flag": false,
+        "show_locale_selector": true,
+        "transparent_header_text_color": "#ffffff",
+        "transparent_logo": "shopify://shop_images/LogoS_GODDESS_ALL_2.png"
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

@@ -1,0 +1,52 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "8f54dd85-8b30-45b9-861e-9101744a37da": {
+      "type": "countdown",
+      "settings": {
+        "separate_section_with_border": true,
+        "image_size": "auto",
+        "subheading": "",
+        "title": "<strong>Enjoy a free Silan Date syrup with purchases over $100</strong>",
+        "content": "<p>Share something about your limited offer or temporary promotion.</p>",
+        "button_link": "shopify://collections/shop-our-store",
+        "button_text": "Shop",
+        "expiration_date": "2023-09-16 10:00",
+        "expiration_behavior": "hide",
+        "timer_position": "end",
+        "animate_number": true,
+        "flip_background": "",
+        "flip_background_opacity": 50,
+        "flip_text_color": "",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
+    "main": {
+      "type": "main-search",
+      "settings": {
+        "show_sort_by": true,
+        "products_per_page": 24,
+        "show_filters": true,
+        "show_filter_group_name": false,
+        "show_filter_values_count": true,
+        "open_filters_by_default": false,
+        "show_category": true,
+        "show_excerpt": true,
+        "show_read_more": true
+      }
+    }
+  },
+  "order": [
+    "8f54dd85-8b30-45b9-861e-9101744a37da",
+    "main"
+  ]
+}

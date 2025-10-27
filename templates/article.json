@@ -1,0 +1,101 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-article",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "show_image": true,
+        "enable_parallax": true,
+        "image_size": "medium",
+        "content_width": "sm",
+        "show_date": true,
+        "show_category": false,
+        "show_author": false,
+        "show_share_buttons": true,
+        "show_sticky_bar": true,
+        "toolbar_color_scheme": "scheme-1"
+      }
+    },
+    "b0adc5c4-b8e8-4cf8-8648-0bcda63dccbf": {
+      "type": "scrolling-content",
+      "blocks": {
+        "template--16842931339481__b0adc5c4-b8e8-4cf8-8648-0bcda63dccbf-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>Get a 25% discount on all items with the code BLUE LAST DAY!!!</strong>"
+          }
+        },
+        "3b5afae4-84ad-4a2a-9474-e5102f033f12": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>ORDER OVER $200 GET 30% OFF NO CODE NEEDED LAST DAY!</strong>"
+          }
+        }
+      },
+      "block_order": [
+        "template--16842931339481__b0adc5c4-b8e8-4cf8-8648-0bcda63dccbf-text-1",
+        "3b5afae4-84ad-4a2a-9474-e5102f033f12"
+      ],
+      "disabled": true,
+      "settings": {
+        "separate_section_with_border": true,
+        "scrolling_speed": 0.2,
+        "scroll_direction": "left",
+        "pause_on_hover": false,
+        "text_font": "heading",
+        "text_font_size_mobile": 28,
+        "text_font_size_desktop": 52,
+        "section_vertical_spacing_mobile": 36,
+        "section_vertical_spacing_desktop": 40,
+        "item_horizontal_spacing_mobile": 80,
+        "item_horizontal_spacing_desktop": 120,
+        "background": "#ffffff",
+        "text_color": "#62554a"
+      }
+    },
+    "prev-next-blog-posts": {
+      "type": "prev-next-blog-posts",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "separate_section_with_border": false,
+        "subheading": "",
+        "title": "additional recipes",
+        "show_category": true,
+        "show_excerpt": true,
+        "show_read_more": true
+      }
+    },
+    "6b10de28-a9be-411a-a7ed-74a8a9eaab91": {
+      "type": "recently-viewed-products",
+      "settings": {
+        "separate_section_with_border": true,
+        "color_scheme": "",
+        "hide_product_information": false,
+        "stack_products": false,
+        "products_count": 9,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "horizontal_spacing_factor": 1,
+        "vertical_spacing_factor": 1,
+        "subheading": "",
+        "title": "Recently viewed products",
+        "content": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "b0adc5c4-b8e8-4cf8-8648-0bcda63dccbf",
+    "prev-next-blog-posts",
+    "6b10de28-a9be-411a-a7ed-74a8a9eaab91"
+  ]
+}

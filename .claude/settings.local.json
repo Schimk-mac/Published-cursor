@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(shopify version:*)",
+      "Bash(shopify auth login:*)",
+      "Bash(shopify theme list:*)",
+      "Bash(shopify theme pull:*)",
+      "Bash(mkdir:*)",
+      "Bash(rm:*)",
+      "Bash(shopify theme dev:*)",
+      "Bash(git init:*)",
+      "Bash(gh auth:*)",
+      "Bash(winget install:*)",
+      "Bash(where gh:*)",
+      "Bash(\"C:\\Program Files\\GitHub CLI\\gh.exe\" --version)",
+      "Bash(\"C:\\Program Files\\GitHub CLI\\gh.exe\" auth login)",
+      "Bash(git add:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
